@@ -1,0 +1,28 @@
+<div class="layout">
+    <div class="container debug">
+        <div class="content__login debug">
+            <form [formGroup]="singInForm" (ngSubmit)="signIn(singInForm)" class="debug" >
+                <h3>Login</h3>
+                <div class="">
+                    <input type="email" class="" placeholder="Email" formControlName="email">
+                    <span>
+                        El usuario <strong>es requerido</strong>
+                    </span>
+                </div>
+                <div class="">
+                    <input type="password" class="" placeholder="password" formControlName="password">
+                    <span class="">
+                        La contraseña <strong>es requerida</strong>
+                    </span>
+                </div>
+                <div class="">
+                    <button class="btn-login" type="submit">Aceptar</button>
+                    <button class="" type="button">Volver</button>
+                </div>
+                <div class="">
+                    <a>Crear cuenta</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
