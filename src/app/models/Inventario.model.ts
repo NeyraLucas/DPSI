@@ -3,6 +3,7 @@ export interface inventario{
     coding: string;
     description: string;
     name: string;
+    id: string;
     status: boolean;
     stock:{
         entradas: number;

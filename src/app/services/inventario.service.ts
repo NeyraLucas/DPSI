@@ -30,4 +30,21 @@ export class InventarioService {
       .pipe(map( dataInv => (dataInv)
       ));
   }
+
+  public addNewProduct(product: inventario){
+    const generateID:string = this.angularFire.createId();
+    return this.angularFire.doc<inventario>(`inventario/${generateID}`).set(product,{merge:true})
+  }
+
+  public deleteProduct(id: string){
+    return this.angularFire.doc<inventario>(`inventario/${id}`).delete();
+  }
+
+  /**
+   * updateProduct
+   */
+  public updateProduct(data:inventario) {
+    return this.angularFire.doc<inventario>(`inventario/${data.id}`).set(data, { merge: true });
+  }
+
 }

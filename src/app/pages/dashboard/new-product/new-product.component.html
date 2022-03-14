@@ -1,0 +1,50 @@
+<section>
+    <h1>Nuevo producto</h1>
+    <div class="flex-row">
+        <form class="example-form" (ngSubmit)="createProduct(productForm)" [formGroup]="productForm">
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre del producto</mat-label>
+                    <input type="text" matInput placeholder="Producto" formControlName="name">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre de la Marca</mat-label>
+                    <input type="text" matInput placeholder="Marca" value="" formControlName="brand">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Descripcion del producto</mat-label>
+                    <input type="text" matInput placeholder="Descripcion" formControlName="description">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Codigo</mat-label>
+                    <input type="text" matInput placeholder="Codigo" formControlName="code">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Stock inicial</mat-label>
+                    <input type="number" matInput placeholder="Stock" formControlName="stock">
+                </mat-form-field>
+            </div>
+            <button type="reset" class="button-gray">Limpiar campos</button>
+            <button type="submit" class="button-green">Agregar</button>
+        </form>
+        <div class="card">
+            <mat-card class="example-card">
+                <mat-card-title>{{productForm.value.name}}</mat-card-title>
+                <mat-card-subtitle>{{productForm.value.brand}}</mat-card-subtitle>
+                <mat-card-content>
+                  <p>{{productForm.value.description}}</p>
+                  <p>{{productForm.value.code}}</p>
+                  <p><strong>{{productForm.value.stock}}</strong></p>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+</section>
