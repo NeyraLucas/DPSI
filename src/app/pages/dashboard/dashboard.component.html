@@ -9,7 +9,7 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="">
+                <a routerLink="home">
                     <i class='bx bxl-meta'></i>
                     <span class="links_name">Dashboard</span>
                 </a>
@@ -44,28 +44,6 @@
     </div>
 </aside>
 
-<section class="dashboard debug">
-    <h1>Inventario</h1>
-
-    <div class="add-product">
-        <button class="button-green" type="button">Agregar nuevo producto</button>
-    </div>
-
-    <div class="flex-row">
-        <div *ngFor="let inventory of (inventario$ | async)">
-            <div class="card">
-                <h2>{{inventory.name}}</h2>
-                <p>Marca: {{inventory.brand}}</p>
-                <p>Descripcion: {{inventory.description}}</p>
-                <div class="card__amount">
-                    <p>Cantidad: {{inventory.stock.total}}</p>
-                </div>
-                <button type="button" class="button-green">Ediar</button>
-                <button type="button" class="button-red">Eliminar</button>
-            </div>
-        </div>
-    </div>
-
-
-
+<section class="dashboard">
+    <router-outlet></router-outlet>
 </section>
