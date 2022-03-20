@@ -11,6 +11,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

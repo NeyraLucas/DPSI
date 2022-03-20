@@ -5,6 +5,8 @@ import { inventario } from 'src/app/models/Inventario.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { InventarioService } from 'src/app/services/inventario.service';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit {
     'actions',
   ];
   data = [];
+  sizeInventary!:number;
 
   constructor(
     private readonly authF: AuthService,
@@ -35,14 +38,36 @@ export class HomeComponent implements OnInit {
     this.serviceInventario.getAllProducts().subscribe((products: any) => {
       this.data = products;
     });
+    
+    this.showSize();
+
   }
 
-  public async deleteProduct(id: string) {
-    try {
-      await this.serviceInventario.deleteProduct(id);
-      alert('Producto eliminado exitosamente');
-    } catch (err) {
-      window.alert(err);
-    }
+  public  deleteProduct(id: string) {
+    // try {
+    //   await if(window.confirm('Esta seguro de eliminar el producto?')){
+    //     this.serviceInventario.deleteProduct(id);
+    //     alert('Producto eliminado exitosamente');
+    //     this.showSize();
+    //   } 
+      
+    // } catch (err) {
+    //   window.alert(err);
+    // }
+    
+    if(window.confirm('Esta seguro de eliminar el producto?')){
+        this.serviceInventario.deleteProduct(id);
+        alert('Producto eliminado exitosamente');
+        this.showSize();
+      } 
+  
   }
+
+  public showSize(){
+    // size
+    this.serviceInventario.sizeCollection().subscribe( size =>{
+      this.sizeInventary = size.size;
+    });
+  }
+
 }

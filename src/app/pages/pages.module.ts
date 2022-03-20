@@ -12,6 +12,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatCardModule} from '@angular/material/card';
 import { EditComponent } from './dashboard/edit/edit.component'; 
+import {MatGridListModule} from '@angular/material/grid-list'; 
 
 
 
@@ -32,7 +33,8 @@ import { EditComponent } from './dashboard/edit/edit.component';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
     
   ],
   exports:[

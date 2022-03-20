@@ -47,4 +47,11 @@ export class InventarioService {
     return this.angularFire.doc<inventario>(`inventario/${data.id}`).set(data, { merge: true });
   }
 
+  /**
+   * sizeCollection
+   */
+  public sizeCollection() {
+    return this.angularFire.collection('inventario').get();
+  }
+
 }
