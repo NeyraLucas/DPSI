@@ -41,6 +41,11 @@ li{
 
 a{
   text-decoration: none;
+  cursor: pointer;
+}
+
+.active{
+  background-color: var(--gray);
 }
 
 

@@ -57,7 +57,7 @@ export class EditComponent implements OnInit {
     try {
       this.serviceInventary.updateProduct(products);
       alert('Producto actualizado');
-      this.route.navigateByUrl('admin');
+      this.route.navigateByUrl('admin/home/products');
     } catch (err) {
       window.alert(err);
     }

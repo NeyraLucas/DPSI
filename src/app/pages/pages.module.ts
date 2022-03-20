@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,19 +12,22 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { EditComponent } from './dashboard/edit/edit.component'; 
 import {MatGridListModule} from '@angular/material/grid-list'; 
+import { SharedModule } from '../shared/shared.module';
+import { ProductsComponent } from './dashboard/products/products.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductsComponent,
     LoginComponent,
     DashboardComponent,
     NewProductComponent,
     HomeComponent,
     EditComponent,
+    ProductsComponent,
   ],
   imports: [
+    SharedModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -38,7 +40,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     
   ],
   exports:[
-    ProductsComponent,
     LoginComponent,
     NewProductComponent,
     HomeComponent

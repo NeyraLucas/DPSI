@@ -5,6 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/dashboard/edit/edit.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
 import { NewProductComponent } from './pages/dashboard/new-product/new-product.component';
+import { ProductsComponent } from './pages/dashboard/products/products.component';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
@@ -32,13 +33,18 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'home/new',
+        path: 'home/products/new',
         component: NewProductComponent,
       },
       {
-        path: 'home/product/:id',
+        path: 'home/products/edit/:id',
         component: EditComponent,
       },
+      {
+        path: 'home/products',
+        component: ProductsComponent,
+      },
+
     ],
   },
 ];

@@ -23,10 +23,8 @@ export class DashboardComponent{
 
 
   constructor(
-    private readonly authF: AuthService,
+    
   ) {}
 
-  public exit() {
-    this.authF.SafelogOut();
-  }
+
 }
