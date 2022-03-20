@@ -8,12 +8,20 @@ import { InventarioService } from 'src/app/services/inventario.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public inventario$!: Observable<Array<inventario>>;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = [
+    'position',
+    'name',
+    'weight',
+    'symbol',
+    'stock',
+    'actions',
+  ];
+  data = [];
 
   constructor(
     private readonly authF: AuthService,
@@ -21,18 +29,20 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.inventario$ = this.serviceInventario.getAllProducts();
-    
+    // this.inventario$ = this.serviceInventario.getAllProducts();
+
+    //view trable
+    this.serviceInventario.getAllProducts().subscribe((products: any) => {
+      this.data = products;
+    });
   }
 
-  public async deleteProduct(id: string){
-    try{
+  public async deleteProduct(id: string) {
+    try {
       await this.serviceInventario.deleteProduct(id);
-      alert('Producto eliminado exitosamente')
-    }catch(err){
+      alert('Producto eliminado exitosamente');
+    } catch (err) {
       window.alert(err);
-    } 
+    }
   }
-
-
 }
