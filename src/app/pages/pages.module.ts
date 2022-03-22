@@ -14,6 +14,7 @@ import { EditComponent } from './dashboard/edit/edit.component';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import { SharedModule } from '../shared/shared.module';
 import { ProductsComponent } from './dashboard/products/products.component';
+import { MenuComponent } from './customer/menu/menu.component';
 
 
 
@@ -25,6 +26,7 @@ import { ProductsComponent } from './dashboard/products/products.component';
     HomeComponent,
     EditComponent,
     ProductsComponent,
+    MenuComponent,
   ],
   imports: [
     SharedModule,

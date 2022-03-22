@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { Img, ITable, PdfMakeWrapper, Table, Txt } from 'pdfmake-wrapper';
 import { inventario } from 'src/app/models/Inventario.model';
 import { InventarioService } from 'src/app/services/inventario.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +11,6 @@ import { InventarioService } from 'src/app/services/inventario.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-
   displayedColumns: string[] = [
     'position',
     'name',
@@ -18,7 +19,9 @@ export class ProductsComponent implements OnInit {
     'stock',
     'actions',
   ];
+  // data = new MatTableDataSource<inventario>();
   data = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private serviceInventario: InventarioService) {}
 
   ngOnInit(): void {
@@ -26,6 +29,10 @@ export class ProductsComponent implements OnInit {
       this.data = products;
     });
   }
+
+  //paginator
+
+
 
   //delete
   public deleteProduct(id: string) {

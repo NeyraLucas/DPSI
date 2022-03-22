@@ -1,0 +1,144 @@
+section .blur_clr {
+  position: absolute;
+  filter: blur(150px);
+}
+
+section .blur_clr:nth-child(1) {
+  background: var(--menu--back);
+  width: 200px;
+  height: 200px;
+  right: 0px;
+  top: -250;
+}
+
+section .blur_clr:nth-child(2) {
+  background: var(--menu--back);
+  width: 300px;
+  height: 300px;
+  left: -100px;
+  bottom: -150px;
+}
+
+.header {
+  //position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    position: relative;
+    font-size: 2.5em;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .nav {
+    position: relative;
+    display: flex;
+
+    li {
+      list-style: none;
+      margin: 0 10px;
+
+      a {
+        color: black;
+        text-decoration: none;
+        padding: 8px 15px;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: 0.5s;
+      }
+    }
+  }
+}
+
+li a:hover {
+  background: var(--gray);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.content {
+  margin: 50px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .content__info {
+    max-width: 50%;
+
+    h1 {
+      font-size: 4.5em;
+      color: #000;
+      line-height: 1em;
+      margin: 10px;
+    }
+
+    p {
+      font-size: 1em;
+      color: black;
+      margin: 30px 10px;
+    }
+
+    .btn {
+      background: var(--dark);
+      color: white;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 25px;
+      font-weight: 500;
+      margin: 10px;
+      transition: 0.5s;
+    }
+  }
+}
+
+.menu__content {
+  margin: 20px 100px;
+  h2 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+}
+
+//cards
+.menu__cards__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 30px;
+
+  .cards {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    img {
+      max-width: 200px;
+    }
+
+    .cards__info {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+
+      h3 {
+        font-weight: bold;
+      }
+
+      p {
+        color: gray;
+      }
+
+      .precio {
+        font-weight: bold;
+        font-size: 20px;
+        color: #ffba08;
+      }
+    }
+  }
+}

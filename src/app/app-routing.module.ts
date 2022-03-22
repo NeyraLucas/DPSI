@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
+import { MenuComponent } from './pages/customer/menu/menu.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/dashboard/edit/edit.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
@@ -47,6 +48,10 @@ const routes: Routes = [
 
     ],
   },
+  {
+    path: 'menu',
+    component: MenuComponent
+  }
 ];
 
 @NgModule({

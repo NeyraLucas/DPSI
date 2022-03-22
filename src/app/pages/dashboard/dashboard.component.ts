@@ -1,8 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { inventario } from 'src/app/models/Inventario.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { InventarioService } from 'src/app/services/inventario.service';
+import { Component} from '@angular/core';
 
 export interface PeriodicElement {
   name: string;
@@ -17,14 +13,7 @@ export interface PeriodicElement {
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent{
-
-  public inventario$!: Observable<Array<inventario>>;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-
-
   constructor(
-    
   ) {}
-
 
 }
