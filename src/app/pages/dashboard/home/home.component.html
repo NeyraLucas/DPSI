@@ -1,12 +1,21 @@
 <div>
     <h4>Estadisticas</h4>
-    <div>
+    <div class="flex-row">
         <mat-card class="card-inventary">
             <mat-card-subtitle>Total de productos en inventario</mat-card-subtitle>
             <mat-card-content>
                 <mat-grid-list cols="2" rowHeight="2:1">
                     <mat-grid-tile><i class='bx bxs-package bx-lg'></i></mat-grid-tile>
                     <mat-grid-tile><strong>{{sizeInventary}}</strong></mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card-inventary">
+            <mat-card-subtitle>Total de productos en menu</mat-card-subtitle>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="2:1">
+                    <mat-grid-tile><i class='bx bxs-package bx-lg'></i></mat-grid-tile>
+                    <mat-grid-tile><strong>{{sizeInventaryMenu}}</strong></mat-grid-tile>
                 </mat-grid-list>
             </mat-card-content>
         </mat-card>

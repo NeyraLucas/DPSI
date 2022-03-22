@@ -15,7 +15,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsComponent } from './dashboard/products/products.component';
 import { MenuComponent } from './customer/menu/menu.component';
-
+import { MenuAdminComponent } from './dashboard/menu-admin/menu-admin.component';
+import { ShowMenuComponent } from './dashboard/menu-admin/show-menu/show-menu.component';
+import { EditMenuComponent } from './dashboard/menu-admin/edit-menu/edit-menu.component';
+import { AddMenuComponent } from './dashboard/menu-admin/add-menu/add-menu.component';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 
 
 @NgModule({
@@ -27,6 +31,10 @@ import { MenuComponent } from './customer/menu/menu.component';
     EditComponent,
     ProductsComponent,
     MenuComponent,
+    MenuAdminComponent,
+    ShowMenuComponent,
+    EditMenuComponent,
+    AddMenuComponent,
   ],
   imports: [
     SharedModule,
@@ -38,7 +46,8 @@ import { MenuComponent } from './customer/menu/menu.component';
     MatPaginatorModule,
     MatInputModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCheckboxModule
     
   ],
   exports:[

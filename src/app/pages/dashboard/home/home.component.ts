@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   public inventario$!: Observable<Array<inventario>>;
 
   sizeInventary!: number;
+  sizeInventaryMenu!: number;
 
   constructor(
     private readonly authF: AuthService,
@@ -26,12 +27,19 @@ export class HomeComponent implements OnInit {
 
 
     this.showSize();
+    this.showSizeMenu();
   }
 
   public showSize() {
     // size
     this.serviceInventario.sizeCollection().subscribe((size) => {
       this.sizeInventary = size.size;
+    });
+  }
+  public showSizeMenu() {
+    // size
+    this.serviceInventario.sizeCollectionMenu().subscribe((size) => {
+      this.sizeInventaryMenu = size.size;
     });
   }
 

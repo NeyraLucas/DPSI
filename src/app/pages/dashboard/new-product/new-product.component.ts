@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { inventario } from 'src/app/models/Inventario.model';
@@ -12,7 +12,7 @@ import { InventarioService } from 'src/app/services/inventario.service';
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.scss']
 })
-export class NewProductComponent implements OnInit {
+export class NewProductComponent  {
   public productForm: FormGroup = new FormGroup({
     name: new FormControl(undefined, [Validators.required, Validators.minLength(3)]),
     brand: new FormControl(undefined,[Validators.required]),
@@ -21,9 +21,6 @@ export class NewProductComponent implements OnInit {
     stock: new FormControl(undefined,[Validators.required]),
   });
   constructor( private readonly serviceInventario: InventarioService, private readonly route: Router) { }
-
-  ngOnInit(): void {
-  }
 
   public async createProduct(product: FormGroup): Promise<void>{
     const inventario: inventario = product.value;

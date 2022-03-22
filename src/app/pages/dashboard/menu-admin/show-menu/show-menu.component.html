@@ -1,0 +1,23 @@
+<!-- cards -->
+<div class="menu__content">
+    <a routerLink="add" class="button-green">Add new Item</a>
+    <h2>MENU</h2>
+    <div class="menu__cards__content">
+        <div class="cards" *ngFor="let menu of(menu$ | async)">
+            <div>
+                <img [src]="menu.image" alt="">
+            </div>
+            <div class="cards__info">
+                <h3>{{menu.name}}</h3>
+                <p>{{menu.description}}</p>
+                <div >
+                    <p class="precio"><i class='bx bxs-dollar-circle bx-ms'></i> {{menu.price}}</p>
+                    <div class="status">
+                        <span >{{menu.status}}</span> 
+                    </div>
+                    <a [routerLink]="['edit', menu.id]">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

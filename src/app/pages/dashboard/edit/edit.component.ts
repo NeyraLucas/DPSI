@@ -53,7 +53,6 @@ export class EditComponent implements OnInit {
 
   public editProduct(product: FormGroup) {
     const products: inventario = product.value;
-    console.log(product);
     try {
       this.serviceInventary.updateProduct(products);
       alert('Producto actualizado');

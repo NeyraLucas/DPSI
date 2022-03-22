@@ -41,4 +41,11 @@ export class InventarioService {
     return this.angularFire.collection('inventario').get();
   }
 
+    /**
+   * sizeCollection of menu
+   */
+     public sizeCollectionMenu() {
+      return this.angularFire.collection('menu').get();
+    }
+
 }
