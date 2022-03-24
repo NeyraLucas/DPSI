@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,19 +11,33 @@ import { HomeComponent } from './dashboard/home/home.component';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatCardModule} from '@angular/material/card';
 import { EditComponent } from './dashboard/edit/edit.component'; 
-
+import {MatGridListModule} from '@angular/material/grid-list'; 
+import { SharedModule } from '../shared/shared.module';
+import { ProductsComponent } from './dashboard/products/products.component';
+import { MenuComponent } from './customer/menu/menu.component';
+import { MenuAdminComponent } from './dashboard/menu-admin/menu-admin.component';
+import { ShowMenuComponent } from './dashboard/menu-admin/show-menu/show-menu.component';
+import { EditMenuComponent } from './dashboard/menu-admin/edit-menu/edit-menu.component';
+import { AddMenuComponent } from './dashboard/menu-admin/add-menu/add-menu.component';
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 
 
 @NgModule({
   declarations: [
-    ProductsComponent,
     LoginComponent,
     DashboardComponent,
     NewProductComponent,
     HomeComponent,
     EditComponent,
+    ProductsComponent,
+    MenuComponent,
+    MenuAdminComponent,
+    ShowMenuComponent,
+    EditMenuComponent,
+    AddMenuComponent,
   ],
   imports: [
+    SharedModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -32,11 +45,12 @@ import { EditComponent } from './dashboard/edit/edit.component';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatCheckboxModule
     
   ],
   exports:[
-    ProductsComponent,
     LoginComponent,
     NewProductComponent,
     HomeComponent

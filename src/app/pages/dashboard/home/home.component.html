@@ -1,22 +1,23 @@
-<h1>Inventario</h1>
-
-<div class="add-product">
-    <button class="button-green" routerLink="new" type="button">Agregar nuevo producto</button>
-</div>
-
-
-<div class="flex-row">
-    <div *ngFor="let inventory of (inventario$ | async)">
-        <div class="card">
-            <h2>{{inventory.name}}</h2>
-            <p>Marca: {{inventory.brand}}</p>
-            <p>Descripcion: {{inventory.description}}</p>
-            <div class="card__amount">
-                <p>Cantidad: {{inventory.stock}}</p>
-            </div>
-            <button type="button" [routerLink]="['product', inventory.id]" class="button-green">Editar</button>
-            <button type="button" (click)="deleteProduct(inventory.id)" class="button-red">Eliminar</button>
-        </div>
+<div>
+    <h4>Estadisticas</h4>
+    <div class="flex-row">
+        <mat-card class="card-inventary">
+            <mat-card-subtitle>Total de productos en inventario</mat-card-subtitle>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="2:1">
+                    <mat-grid-tile><i class='bx bxs-package bx-lg'></i></mat-grid-tile>
+                    <mat-grid-tile><strong>{{sizeInventary}}</strong></mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card-inventary">
+            <mat-card-subtitle>Total de productos en menu</mat-card-subtitle>
+            <mat-card-content>
+                <mat-grid-list cols="2" rowHeight="2:1">
+                    <mat-grid-tile><i class='bx bxs-package bx-lg'></i></mat-grid-tile>
+                    <mat-grid-tile><strong>{{sizeInventaryMenu}}</strong></mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
-

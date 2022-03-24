@@ -8,8 +8,13 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
   
-  .add-product{
-    width: 25%;
-    margin: 15px 10px;
-  
+
+ 
+  //card inventario
+  .card-inventary{
+    max-width: 250px;
+    color: var(--dark);
+    strong{
+      font-size: 36px;
+    }
   }

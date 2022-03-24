@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
+import { MenuComponent } from './pages/customer/menu/menu.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/dashboard/edit/edit.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
+import { AddMenuComponent } from './pages/dashboard/menu-admin/add-menu/add-menu.component';
+import { EditMenuComponent } from './pages/dashboard/menu-admin/edit-menu/edit-menu.component';
+import { MenuAdminComponent } from './pages/dashboard/menu-admin/menu-admin.component';
+import { ShowMenuComponent } from './pages/dashboard/menu-admin/show-menu/show-menu.component';
 import { NewProductComponent } from './pages/dashboard/new-product/new-product.component';
+import { ProductsComponent } from './pages/dashboard/products/products.component';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
@@ -32,15 +38,47 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'home/new',
+        path: 'home/products/new',
         component: NewProductComponent,
       },
       {
-        path: 'home/product/:id',
+        path: 'home/products/edit/:id',
         component: EditComponent,
       },
+      {
+        path: 'home/products',
+        component: ProductsComponent,
+      },
+      {
+        path: 'home/menu',
+        component: MenuAdminComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'show',
+            pathMatch: 'full'
+          },
+          {
+            path: 'show',
+            component: ShowMenuComponent,
+          },
+          {
+            path: 'show/edit/:id',
+            component: EditMenuComponent,
+          },
+          {
+            path: 'show/add',
+            component: AddMenuComponent,
+          },
+        ]
+      },
+
     ],
   },
+  {
+    path: 'menu',
+    component: MenuComponent
+  }
 ];
 
 @NgModule({

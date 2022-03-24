@@ -9,20 +9,7 @@ import { inventario } from '../models/Inventario.model';
 export class InventarioService {
   constructor(private readonly angularFire: AngularFirestore) {}
 
-  // public getAllProducts(){
-  //   return this.angularFire.collection<inventario>('inventario').valueChanges({idField:'id'});
-  // }
-
   public getAllProducts() {
-    // const dataInv = (inv: Array<inventario>) =>{
-    //   const data= [];
-
-    //   for(let i=0; i<inv.length; i++){
-    //     data[i] = inv;
-    //   }
-
-    //   return data;
-    // }
 
     return this.angularFire
       .collection<inventario>('inventario')
@@ -46,5 +33,19 @@ export class InventarioService {
   public updateProduct(data:inventario) {
     return this.angularFire.doc<inventario>(`inventario/${data.id}`).set(data, { merge: true });
   }
+
+  /**
+   * sizeCollection
+   */
+  public sizeCollection() {
+    return this.angularFire.collection('inventario').get();
+  }
+
+    /**
+   * sizeCollection of menu
+   */
+     public sizeCollectionMenu() {
+      return this.angularFire.collection('menu').get();
+    }
 
 }

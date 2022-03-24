@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { Img, ITable, PdfMakeWrapper, Table, Txt } from 'pdfmake-wrapper';
 import { Observable } from 'rxjs';
 import { inventario } from 'src/app/models/Inventario.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,12 +9,14 @@ import { InventarioService } from 'src/app/services/inventario.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public inventario$!: Observable<Array<inventario>>;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+
+  sizeInventary!: number;
+  sizeInventaryMenu!: number;
 
   constructor(
     private readonly authF: AuthService,
@@ -21,17 +24,23 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.inventario$ = this.serviceInventario.getAllProducts();
-    
+
+
+    this.showSize();
+    this.showSizeMenu();
   }
 
-  public async deleteProduct(id: string){
-    try{
-      await this.serviceInventario.deleteProduct(id);
-      alert('Producto eliminado exitosamente')
-    }catch(err){
-      window.alert(err);
-    } 
+  public showSize() {
+    // size
+    this.serviceInventario.sizeCollection().subscribe((size) => {
+      this.sizeInventary = size.size;
+    });
+  }
+  public showSizeMenu() {
+    // size
+    this.serviceInventario.sizeCollectionMenu().subscribe((size) => {
+      this.sizeInventaryMenu = size.size;
+    });
   }
 
 
