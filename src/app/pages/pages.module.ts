@@ -19,7 +19,8 @@ import { MenuAdminComponent } from './dashboard/menu-admin/menu-admin.component'
 import { ShowMenuComponent } from './dashboard/menu-admin/show-menu/show-menu.component';
 import { EditMenuComponent } from './dashboard/menu-admin/edit-menu/edit-menu.component';
 import { AddMenuComponent } from './dashboard/menu-admin/add-menu/add-menu.component';
-import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ProveedoresComponent } from './dashboard/proveedores/proveedores.component'; 
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ShowMenuComponent,
     EditMenuComponent,
     AddMenuComponent,
+    ProveedoresComponent,
   ],
   imports: [
     SharedModule,

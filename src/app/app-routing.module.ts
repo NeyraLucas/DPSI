@@ -11,6 +11,7 @@ import { MenuAdminComponent } from './pages/dashboard/menu-admin/menu-admin.comp
 import { ShowMenuComponent } from './pages/dashboard/menu-admin/show-menu/show-menu.component';
 import { NewProductComponent } from './pages/dashboard/new-product/new-product.component';
 import { ProductsComponent } from './pages/dashboard/products/products.component';
+import { ProveedoresComponent } from './pages/dashboard/proveedores/proveedores.component';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
@@ -71,6 +72,10 @@ const routes: Routes = [
             component: AddMenuComponent,
           },
         ]
+      },
+      {
+        path: 'home/proveedores',
+        component: ProveedoresComponent,
       },
 
     ],
