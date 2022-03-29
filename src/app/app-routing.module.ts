@@ -12,6 +12,7 @@ import { ShowMenuComponent } from './pages/dashboard/menu-admin/show-menu/show-m
 import { NewProductComponent } from './pages/dashboard/new-product/new-product.component';
 import { ProductsComponent } from './pages/dashboard/products/products.component';
 import { ProveedoresComponent } from './pages/dashboard/proveedores/proveedores.component';
+import { PuntoDeVentaComponent } from './pages/dashboard/punto-de-venta/punto-de-venta.component';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
@@ -76,6 +77,10 @@ const routes: Routes = [
       {
         path: 'home/proveedores',
         component: ProveedoresComponent,
+      },
+      {
+        path: 'home/punto-de-venta',
+        component: PuntoDeVentaComponent,
       },
 
     ],

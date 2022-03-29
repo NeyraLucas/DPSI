@@ -1,52 +1,65 @@
 <aside class="aside__sidebar">
-    <div class="sidebar">
-        <div class="logo_content">
-            <div class="logo">
-                <i class='bx bxl-angular'></i>
-                <div class="logo_name">ADMIN</div>
-            </div>
-            <i class="bx bx-menu" id="btn"></i>
-        </div>
-        <ul class="nav_list">
-            <li>
-                <a routerLink="home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-                    true}">
-                    <i class='bx bxl-meta'></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="home/products" routerLinkActive="active">
-                    <i class='bx bxs-package'></i>
-                    <span class="links_name">Inventario</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="home/menu" routerLinkActive="active">
-                    <i class='bx bxs-food-menu'></i>
-                    <span class="links_name">Menu</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="home/proveedores" routerLinkActive="active">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">Proveedores</span>
-                </a>
-            </li>
-        </ul>
-
-        <div class="profile__content">
-            <div class="profile">
-                <div class="profile_details">
-                    <img src="https://userstock.io/data/wp-content/uploads/2017/06/pexels-photo-62456-300x300.jpeg"
-                        alt="">
-                    <div class="name_job">
-                        <div>NAME</div>
-                        <div> SIR <span><i class='bx bxs-heart'></i></span> </div>
-                    </div>
-                </div>
-                <i class='bx bx-log-out' (click)="exit()" id="log_out"></i>
-            </div>
-        </div>
+  <div class="sidebar">
+    <div class="logo_content">
+      <div class="logo">
+        <i class="bx bxl-angular"></i>
+        <div class="logo_name">ADMIN</div>
+      </div>
+      <i class="bx bx-menu" id="btn"></i>
     </div>
+    <ul class="nav_list">
+      <li>
+        <a
+          routerLink="home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="bx bxl-meta"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="home/products" routerLinkActive="active">
+          <i class="bx bxs-package"></i>
+          <span class="links_name">Inventario</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="home/menu" routerLinkActive="active">
+          <i class="bx bxs-food-menu"></i>
+          <span class="links_name">Menu</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="home/proveedores" routerLinkActive="active">
+          <i class="bx bx-user"></i>
+          <span class="links_name">Proveedores</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="home/punto-de-venta" routerLinkActive="active">
+          <i class='bx bxs-wallet'></i>
+          <span class="links_name">Punto de venta</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="profile__content">
+      <div class="profile">
+        <div class="profile_details">
+          <img
+            src="https://userstock.io/data/wp-content/uploads/2017/06/pexels-photo-62456-300x300.jpeg"
+            alt=""
+          />
+          <div class="name_job">
+            <div>NAME</div>
+            <div>
+              SIR <span><i class="bx bxs-heart"></i></span>
+            </div>
+          </div>
+        </div>
+        <i class="bx bx-log-out" (click)="exit()" id="log_out"></i>
+      </div>
+    </div>
+  </div>
 </aside>
