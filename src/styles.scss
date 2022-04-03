@@ -4,6 +4,7 @@
   --dark: #03045e;
   --gray: #00b4d8;
   --menu--back: #90e0ef;
+  --gold: #ffb703;
 }
 
 body {
@@ -47,6 +48,19 @@ a{
 
 .active{
   background-color: var(--gray);
+}
+
+//table
+table {
+  width: 100%;
+}
+
+.mat-header-cell {
+  padding: 0 10px;
+}
+
+.mat-cell {
+  padding: 0 10px;
 }
 
 

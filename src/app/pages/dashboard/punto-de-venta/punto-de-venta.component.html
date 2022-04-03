@@ -1,0 +1,101 @@
+<div class="cont">
+  <!-- 1 -->
+  <section class="container-sales">
+    <div class="">
+      <mat-form-field appearance="fill">
+        <mat-label>Metodo de pago</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="food">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="container-content-sales">
+      <!-- Cabecera -->
+      <div class="content-header">
+        <p>Producto</p>
+        <p>Cantidad</p>
+        <p>Precio</p>
+        <p>Subtotal</p>
+      </div>
+
+      <!-- Content -->
+      <div *ngFor="let item of [1, 2]" class="content-data">
+        <div>
+          <p class="text-bold">Ballena</p>
+          <img
+            class="img-product"
+            src="https://recetacubana.com/wp-content/uploads/2020/06/pescado-empanizado.jpg"
+            alt="img producto"
+          />
+        </div>
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Cantidad</mat-label>
+            <input matInput placeholder="" value="2" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput placeholder="" value="200" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Subtotal</mat-label>
+            <input matInput placeholder="" value="400" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Pay -->
+      <div class="content-header bg-gray">
+        <div>
+          <p>Total de articulos</p>
+          <p class="amount">8</p>
+        </div>
+        <div>
+          <p>Total a pagar</p>
+          <p class="money">$999.99</p>
+        </div>
+        <div class="py">
+          <button class="">Cancelar</button>
+        </div>
+      </div>
+      <div class="content-header">
+        <div class="py">
+          <button class="button-green">Pagar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 2 -->
+  <section>
+    Productos
+
+    <div *ngFor="let item of [1, 2]" class="menu__cards__content">
+      <div class="cards">
+        <div>
+          <img
+            src="https://recetacubana.com/wp-content/uploads/2020/06/pescado-empanizado.jpg"
+            alt="img producto"
+            alt=""
+          />
+        </div>
+        <div class="cards__info">
+          <h3>Ballena</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Temporibus, molestiae?
+          </p>
+          <div>
+            <p class="precio"><i class="bx bxs-dollar-circle bx-ms"></i>$200</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -8,10 +8,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NewProductComponent } from './dashboard/new-product/new-product.component';
 import { HomeComponent } from './dashboard/home/home.component';
-import {MatInputModule} from '@angular/material/input'; 
+import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
-import { EditComponent } from './dashboard/edit/edit.component'; 
-import {MatGridListModule} from '@angular/material/grid-list'; 
+import { EditComponent } from './dashboard/edit/edit.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsComponent } from './dashboard/products/products.component';
 import { MenuComponent } from './customer/menu/menu.component';
@@ -19,7 +19,10 @@ import { MenuAdminComponent } from './dashboard/menu-admin/menu-admin.component'
 import { ShowMenuComponent } from './dashboard/menu-admin/show-menu/show-menu.component';
 import { EditMenuComponent } from './dashboard/menu-admin/edit-menu/edit-menu.component';
 import { AddMenuComponent } from './dashboard/menu-admin/add-menu/add-menu.component';
-import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ProveedoresComponent } from './dashboard/proveedores/proveedores.component';
+import { PuntoDeVentaComponent } from './dashboard/punto-de-venta/punto-de-venta.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -35,6 +38,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ShowMenuComponent,
     EditMenuComponent,
     AddMenuComponent,
+    ProveedoresComponent,
+    PuntoDeVentaComponent,
   ],
   imports: [
     SharedModule,
@@ -47,8 +52,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatCardModule,
     MatGridListModule,
-    MatCheckboxModule
-    
+    MatCheckboxModule,
+    MatSelectModule
+
   ],
   exports:[
     LoginComponent,
