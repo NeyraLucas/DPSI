@@ -22,34 +22,36 @@
       </div>
 
       <!-- Content -->
-      <div *ngFor="let item of [1, 2]" class="content-data">
+      <div *ngFor="let menuClick of clickedRows" class="content-data">
         <div>
-          <p class="text-bold">Ballena</p>
+          <p class="text-bold">{{menuClick.name}}</p>
           <img
             class="img-product"
-            src="https://recetacubana.com/wp-content/uploads/2020/06/pescado-empanizado.jpg"
+            [src]="menuClick.image"
             alt="img producto"
           />
         </div>
         <div>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Cantidad</mat-label>
-            <input matInput placeholder="" value="2" />
+            <input matInput placeholder="" value="1" />
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Precio</mat-label>
-            <input matInput placeholder="" value="200" />
+            <input matInput placeholder="" class="test" [value]="menuClick.price" />
           </mat-form-field>
         </div>
         <div>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Subtotal</mat-label>
-            <input matInput placeholder="" value="400" />
+            <input matInput placeholder="" [value]="menuClick.price" />
           </mat-form-field>
         </div>
+
       </div>
+
 
       <!-- Pay -->
       <div class="content-header bg-gray">
@@ -59,7 +61,8 @@
         </div>
         <div>
           <p>Total a pagar</p>
-          <p class="money">$999.99</p>
+          <!-- <code></code> -->
+          <!-- <p class="money">{{test() | currency}}</p> -->
         </div>
         <div class="py">
           <button class="">Cancelar</button>
@@ -73,29 +76,53 @@
     </div>
   </section>
   <!-- 2 -->
-  <section>
-    Productos
+  <section class="products">
+    <h3 class="">Productos</h3>
 
-    <div *ngFor="let item of [1, 2]" class="menu__cards__content">
-      <div class="cards">
-        <div>
-          <img
-            src="https://recetacubana.com/wp-content/uploads/2020/06/pescado-empanizado.jpg"
-            alt="img producto"
-            alt=""
-          />
-        </div>
-        <div class="cards__info">
-          <h3>Ballena</h3>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Temporibus, molestiae?
-          </p>
-          <div>
-            <p class="precio"><i class="bx bxs-dollar-circle bx-ms"></i>$200</p>
-          </div>
-        </div>
-      </div>
+    <div class="table-container" (click)="test()">
+      <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8 demo-table"
+    >
+      <!-- Position Column -->
+      <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef>Imagen</th>
+        <img
+          class="image-product"
+          *matCellDef="let element"
+          [src]="element.image"
+          alt="img producto"
+          alt=""
+        />
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="desc">
+        <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="costo">
+        <th mat-header-cell *matHeaderCellDef>Costo</th>
+        <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
+    </table>
     </div>
   </section>
 </div>
