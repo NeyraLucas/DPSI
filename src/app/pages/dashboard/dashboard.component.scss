@@ -5,6 +5,13 @@
   height: 100%;
   width: calc(100% - 300px);
   left: 280px;
+  transition: all 0.5s ease;
+}
+
+.sidebar.active ~ .dashboard{
+  width: calc(100% - 240px);
+  left: 240px;
+
 }
 
 table {

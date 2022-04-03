@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { Menu } from 'src/app/models/Menu.model';
+import { OrdenesService } from 'src/app/services/ordenes.service';
 
 
 @Component({
@@ -19,12 +21,16 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class OrdenesComponent implements OnInit {
 
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+  columnsToDisplay = ['id', 'name', 'description', 'price', 'status'];
   expandedElement!: PeriodicElement | null;
+  data: (Menu & { id: string })[] = [];
 
-  constructor() { }
+  constructor(private ordersService: OrdenesService) { }
 
   ngOnInit(): void {
+    this.ordersService.GetAllOrders().subscribe((data) =>{
+      this.data = data
+    })
   }
 
 }

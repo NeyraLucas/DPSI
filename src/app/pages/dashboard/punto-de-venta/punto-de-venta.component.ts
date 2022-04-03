@@ -43,19 +43,17 @@ export class PuntoDeVentaComponent implements OnInit {
   }
 
   public test(data: Menu) {
-      //console.log(data);
-      // this.dataMenu.id = data.id;
-      // this.dataMenu.description = data.description;
-      // this.dataMenu.image = data.image;
-      // this.dataMenu.name = data.image;
-      // this.dataMenu.price = data.price;
-      // this.total++;
-      // this.subTotal += data.price;
-      this.dataMenu = data;
-      console.log(`Total: ${this.total}`);
-      console.log(this.dataMenu);
-
-
+    //console.log(data);
+    // this.dataMenu.id = data.id;
+    // this.dataMenu.description = data.description;
+    // this.dataMenu.image = data.image;
+    // this.dataMenu.name = data.image;
+    // this.dataMenu.price = data.price;
+    this.total++;
+    this.subTotal += data.price;
+    this.dataMenu = data;
+    console.log(`Total: ${this.total}`);
+    console.log(this.dataMenu);
   }
 
   public payMenu() {
