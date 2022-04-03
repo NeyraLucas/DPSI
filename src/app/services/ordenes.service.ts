@@ -18,4 +18,11 @@ export class OrdenesService {
     return this.angularFire.collection<Menu>(`ordenes`).valueChanges({idField:'id'});
   }
 
+  /**
+   * SizeOrders
+   */
+  public SizeOrders() {
+    return this.angularFire.collection('ordenes').get();
+  }
+
 }
