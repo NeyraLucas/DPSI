@@ -57,12 +57,13 @@
       <div class="content-header bg-gray">
         <div>
           <p>Total de articulos</p>
-          <p class="amount">8</p>
+          <p class="amount">{{total}}</p>
         </div>
         <div>
           <p>Total a pagar</p>
           <!-- <code></code> -->
           <!-- <p class="money">{{test() | currency}}</p> -->
+          <p class="money">{{subTotal}}</p>
         </div>
         <div class="py">
           <button class="">Cancelar</button>
@@ -70,7 +71,7 @@
       </div>
       <div class="content-header">
         <div class="py">
-          <button class="button-green">Pagar</button>
+          <button class="button-green" (click)="payMenu()">Pagar</button>
         </div>
       </div>
     </div>
@@ -79,7 +80,12 @@
   <section class="products">
     <h3 class="">Productos</h3>
 
-    <div class="table-container" (click)="test()">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput placeholder="Ex. ium" #input>
+    </mat-form-field>
+
+    <div class="table-container">
       <table
       mat-table
       [dataSource]="dataSource"
@@ -120,6 +126,7 @@
         mat-row
         (click)="clickedRows.add(row)"
         [class.demo-row-is-clicked]="clickedRows.has(row)"
+        (click)="test(row)"
         *matRowDef="let row; columns: displayedColumns"
       ></tr>
     </table>
