@@ -3,7 +3,7 @@
   <section class="container-sales">
     <div class="">
       <mat-form-field appearance="fill">
-        <mat-label>Metodo de pago</mat-label>
+        <mat-label>Mesa</mat-label>
         <mat-select [(ngModel)]="selectedValue" name="food">
           <mat-option *ngFor="let food of foods" [value]="food.value">
             {{ food.viewValue }}
@@ -71,7 +71,7 @@
       </div>
       <div class="content-header">
         <div class="py">
-          <button class="button-green" (click)="payMenu()">Pagar</button>
+          <button class="button-green" (click)="payMenu()">Generar orden</button>
         </div>
       </div>
     </div>
