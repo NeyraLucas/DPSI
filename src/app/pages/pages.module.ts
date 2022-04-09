@@ -23,6 +23,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ProveedoresComponent } from './dashboard/proveedores/proveedores.component';
 import { PuntoDeVentaComponent } from './dashboard/punto-de-venta/punto-de-venta.component';
 import {MatSelectModule} from '@angular/material/select';
+import { OrdenesComponent } from './dashboard/ordenes/ordenes.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {MatSelectModule} from '@angular/material/select';
     AddMenuComponent,
     ProveedoresComponent,
     PuntoDeVentaComponent,
+    OrdenesComponent,
   ],
   imports: [
     SharedModule,

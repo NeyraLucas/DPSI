@@ -1,23 +1,20 @@
-<div>
-    <h4>Estadisticas</h4>
+<div class="m-x-15">
+    <h2 class="bold">Dashboard</h2>
     <div class="flex-row">
-        <mat-card class="card-inventary">
-            <mat-card-subtitle>Total de productos en inventario</mat-card-subtitle>
-            <mat-card-content>
-                <mat-grid-list cols="2" rowHeight="2:1">
-                    <mat-grid-tile><i class='bx bxs-package bx-lg'></i></mat-grid-tile>
-                    <mat-grid-tile><strong>{{sizeInventary}}</strong></mat-grid-tile>
-                </mat-grid-list>
-            </mat-card-content>
-        </mat-card>
-        <mat-card class="card-inventary">
-            <mat-card-subtitle>Total de productos en menu</mat-card-subtitle>
-            <mat-card-content>
-                <mat-grid-list cols="2" rowHeight="2:1">
-                    <mat-grid-tile><i class='bx bxs-package bx-lg'></i></mat-grid-tile>
-                    <mat-grid-tile><strong>{{sizeInventaryMenu}}</strong></mat-grid-tile>
-                </mat-grid-list>
-            </mat-card-content>
-        </mat-card>
+        <div class="card_home flex-column">
+            <i class='bx bx-package bx-lg icon'></i>
+            <span class="card_title">Total de productos en inventario</span>
+            <p class="card_subtitle">{{sizeInventary}}</p>
+        </div>
+        <div class="card_home flex-column">
+            <i class='bx bx-food-menu bx-lg icon'></i>
+            <span class="card_title">Total de productos en menu</span>
+            <p class="card_subtitle">{{sizeInventaryMenu}}</p>
+        </div>
+        <div class="card_home flex-column">
+            <i class='bx bx-bowl-hot bx-lg icon'></i>
+            <span class="card_title">Total de Ordenes</span>
+            <p class="card_subtitle">{{sizeOrders}}</p>
+        </div>
     </div>
 </div>

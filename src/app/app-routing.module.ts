@@ -10,6 +10,7 @@ import { EditMenuComponent } from './pages/dashboard/menu-admin/edit-menu/edit-m
 import { MenuAdminComponent } from './pages/dashboard/menu-admin/menu-admin.component';
 import { ShowMenuComponent } from './pages/dashboard/menu-admin/show-menu/show-menu.component';
 import { NewProductComponent } from './pages/dashboard/new-product/new-product.component';
+import { OrdenesComponent } from './pages/dashboard/ordenes/ordenes.component';
 import { ProductsComponent } from './pages/dashboard/products/products.component';
 import { ProveedoresComponent } from './pages/dashboard/proveedores/proveedores.component';
 import { PuntoDeVentaComponent } from './pages/dashboard/punto-de-venta/punto-de-venta.component';
@@ -81,6 +82,10 @@ const routes: Routes = [
       {
         path: 'home/punto-de-venta',
         component: PuntoDeVentaComponent,
+      },
+      {
+        path: 'home/ordenes',
+        component: OrdenesComponent,
       },
 
     ],

@@ -7,7 +7,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
   constructor(private readonly authF: AuthService) { }
 
   ngOnInit(): void {
@@ -17,4 +16,11 @@ export class SidebarComponent implements OnInit {
     this.authF.SafelogOut();
   }
 
+  public clickMenu(){
+   // let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    sidebar?.classList.toggle("active")
+  }
+
 }
+

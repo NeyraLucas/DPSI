@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { inventario } from 'src/app/models/Inventario.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { InventarioService } from 'src/app/services/inventario.service';
+import { OrdenesService } from 'src/app/services/ordenes.service';
 
 @Component({
   selector: 'app-home',
@@ -17,31 +18,33 @@ export class HomeComponent implements OnInit {
 
   sizeInventary!: number;
   sizeInventaryMenu!: number;
+  sizeOrders!: number;
 
   constructor(
     private readonly authF: AuthService,
-    private serviceInventario: InventarioService
+    private serviceInventario: InventarioService,
+    private serviceOrders:OrdenesService
   ) {}
 
   ngOnInit(): void {
-
-
-    this.showSize();
-    this.showSizeMenu();
+    this.ShowData();
   }
 
-  public showSize() {
+  public ShowData() {
     // size
     this.serviceInventario.sizeCollection().subscribe((size) => {
       this.sizeInventary = size.size;
     });
-  }
-  public showSizeMenu() {
-    // size
+
+    // size Menu
     this.serviceInventario.sizeCollectionMenu().subscribe((size) => {
       this.sizeInventaryMenu = size.size;
     });
-  }
 
+    // size Orders
+    this.serviceOrders.SizeOrders().subscribe((size) => {
+      this.sizeOrders = size.size;
+    });
+  }
 
 }

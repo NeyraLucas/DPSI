@@ -2,10 +2,10 @@
   <div class="sidebar">
     <div class="logo_content">
       <div class="logo">
-        <i class="bx bxl-angular"></i>
-        <div class="logo_name">ADMIN</div>
+        <i class='bx bxl-meta' ></i>
+        <div class="logo_name">Mariscos</div>
       </div>
-      <i class="bx bx-menu" id="btn"></i>
+      <i class='bx bx-menu-alt-right' id="btn" (click)="clickMenu()"></i>
     </div>
     <ul class="nav_list">
       <li>
@@ -40,6 +40,12 @@
         <a routerLink="home/punto-de-venta" routerLinkActive="active">
           <i class='bx bxs-wallet'></i>
           <span class="links_name">Punto de venta</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="home/ordenes" routerLinkActive="active">
+          <i class='bx bxs-file-blank'></i>
+          <span class="links_name">Ordenes</span>
         </a>
       </li>
     </ul>
