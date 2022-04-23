@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
+import { MenuCategoriaComponent } from './pages/customer/menu-categoria/menu-categoria.component';
 import { MenuComponent } from './pages/customer/menu/menu.component';
+import { PrincipalComponent } from './pages/customer/menu/principal/principal.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/dashboard/edit/edit.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
@@ -92,7 +94,22 @@ const routes: Routes = [
   },
   {
     path: 'menu',
-    component: MenuComponent
+    component: MenuComponent,
+    children:[
+      {
+        path: '',
+        redirectTo: 'principal',
+        pathMatch: 'full',
+      },
+      {
+        path: 'principal',
+        component: PrincipalComponent,
+      },
+      {
+        path: 'principal/categoria/:id',
+        component: MenuCategoriaComponent,
+      },
+    ]
   }
 ];
 

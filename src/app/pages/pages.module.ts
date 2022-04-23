@@ -24,6 +24,9 @@ import { ProveedoresComponent } from './dashboard/proveedores/proveedores.compon
 import { PuntoDeVentaComponent } from './dashboard/punto-de-venta/punto-de-venta.component';
 import {MatSelectModule} from '@angular/material/select';
 import { OrdenesComponent } from './dashboard/ordenes/ordenes.component';
+import { NavMenuComponent } from './customer/nav-menu/nav-menu.component';
+import { MenuCategoriaComponent } from './customer/menu-categoria/menu-categoria.component';
+import { PrincipalComponent } from './customer/menu/principal/principal.component';
 
 
 @NgModule({
@@ -42,6 +45,9 @@ import { OrdenesComponent } from './dashboard/ordenes/ordenes.component';
     ProveedoresComponent,
     PuntoDeVentaComponent,
     OrdenesComponent,
+    NavMenuComponent,
+    MenuCategoriaComponent,
+    PrincipalComponent,
   ],
   imports: [
     SharedModule,

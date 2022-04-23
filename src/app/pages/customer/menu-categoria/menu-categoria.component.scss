@@ -1,0 +1,77 @@
+$green: #64d9ea;
+$black: #130f40;
+$white: #fff;
+$light-color: #666;
+$light-bg: #f7f7f7;
+$border:.1rem solid rgba(0,0,0,.2);
+$box-shadow:0 1rem 1rem rgba(0,0,0,.05);
+
+@mixin grid($val) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+  gap:1.5rem;
+}
+
+.box-container{
+  @include grid(25rem);
+
+  .box{
+    border-radius: .5rem;
+    position: relative;
+    background: $light-bg;
+    padding:2rem;
+    text-align: center;
+
+    .fa-heart{
+      position: absolute;
+      top:1.5rem; right:1.5rem;
+      font-size: 2.5rem;
+      color:$light-color;
+      cursor: pointer;
+
+      &:hover{
+        color:$green;
+      }
+    }
+
+    .image{
+      margin:1rem 0;
+
+      img{
+        height: 15rem;
+      }
+    }
+
+    .content{
+
+      h3{
+        font-size: 2rem;
+        color:$black;
+      }
+
+      .stars{
+        padding:1rem 0;
+        font-size: 1.7rem;
+
+        i{
+          color:gold;
+        }
+
+        span{
+          color:$light-color;
+        }
+      }
+
+      .price{
+        font-size: 2rem;
+        color:$black;
+
+        span{
+          font-size: 1.5rem;
+          color:$light-color;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}

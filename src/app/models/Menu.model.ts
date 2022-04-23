@@ -5,5 +5,5 @@ export interface Menu {
     description: string;
     status: boolean;
     id: string
-  }
-  
+    categoria: string;
+}
