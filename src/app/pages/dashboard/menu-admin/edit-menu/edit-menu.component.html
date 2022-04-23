@@ -26,8 +26,18 @@
             </mat-form-field>
         </div>
         <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Categoria</mat-label>
+            <mat-select formControlName="categoria">
+              <mat-option *ngFor="let cat of Categoria$ |async" [value]="cat.categoria" >
+                {{cat.categoria}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+        <div>
             <label for="status">
-                funko avaible status
+                Status
             </label>
             <input type="checkbox" id="status" placeholder="funko brand" formControlName="status">
         </div>

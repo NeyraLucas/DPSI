@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, switchMap, take } from 'rxjs';
+import { Categories } from 'src/app/models/Categories';
 import { Menu } from 'src/app/models/Menu.model';
 import { MenuService } from 'src/app/services/menu.service';
 
@@ -13,6 +14,7 @@ import { MenuService } from 'src/app/services/menu.service';
 })
 export class EditMenuComponent implements OnInit {
   public menu$!: Observable<Menu>;
+  Categoria$!: Observable<(Categories & { id: string; })[] >;
   public productForm: FormGroup = new FormGroup({
     name: new FormControl(undefined, [Validators.required, Validators.minLength(3)]),
     price: new FormControl(undefined,[Validators.required]),
@@ -20,6 +22,7 @@ export class EditMenuComponent implements OnInit {
     description: new FormControl(undefined,[Validators.required]),
     image: new FormControl(undefined,[Validators.required]),
     id: new FormControl(undefined, [Validators.required]),
+    categoria: new FormControl(undefined,[Validators.required]),
   });
 
   constructor(private readonly route: Router, private readonly serviceMenu: MenuService,private activateRoute: ActivatedRoute,
@@ -27,6 +30,7 @@ export class EditMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.showMenu();
+    this.Categoria$ = this.serviceMenu.getCategories();
   }
 
   public showMenu(){

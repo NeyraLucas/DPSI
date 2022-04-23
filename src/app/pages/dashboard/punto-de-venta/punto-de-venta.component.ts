@@ -18,6 +18,7 @@ export class PuntoDeVentaComponent implements OnInit {
   total: number = 0;
   subTotal: number = 0;
   dataMenu!: Menu;
+  mennn!: Array<Menu>;
   selectedValue!: string;
   dataMenu$!: Observable<Array<Menu>>;
 
@@ -43,24 +44,30 @@ export class PuntoDeVentaComponent implements OnInit {
   }
 
   public test(data: Menu) {
-    //console.log(data);
+    console.log(data);
     // this.dataMenu.id = data.id;
     // this.dataMenu.description = data.description;
     // this.dataMenu.image = data.image;
-    // this.dataMenu.name = data.image;
+    // this.dataMenu.name = data.name;
     // this.dataMenu.price = data.price;
     this.total++;
     this.subTotal += data.price;
-    this.dataMenu = data;
-    console.log(`Total: ${this.total}`);
-    console.log(this.dataMenu);
+    // this.dataMenu = data;
+
+    //this.mennn.push(data);
+    //console.log(`Total: ${this.total}`);
+  //  console.log(this.dataMenu);
   }
 
   public payMenu() {
-    // let json:any = JSON.stringify(this.dataMenu);
+    const men:Menu = this.dataMenu;
     try {
-      this.ordersService.CreateOrder(this.dataMenu);
-      window.alert('Producto pagado');
+      // this.ordersService.CreateOrder(men);
+      console.log("Ordenes:");
+      console.log(this.mennn);
+
+
+      window.alert('Producto ordenado');
       this.route.navigateByUrl('admin');
     } catch (err) {
       window.alert(err);

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Categories } from '../models/Categories';
 import { Menu } from '../models/Menu.model';
 
 @Injectable({
@@ -26,5 +27,13 @@ export class MenuService {
   public updateMenu(data:Menu) {
     return this.angularFire.doc<Menu>(`menu/${data.id}`).set(data, { merge: true });
   }
+
+  /**
+   * getCategories
+   */
+  public getCategories() {
+    return this.angularFire.collection<Categories>('categorias').valueChanges({idField:'id'});
+  }
+
 
 }
