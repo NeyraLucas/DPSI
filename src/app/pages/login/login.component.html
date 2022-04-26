@@ -1,28 +1,46 @@
-<div class="layout">
-    <div class="container">
-        <div class="content__login">
-            <form [formGroup]="singInForm" (ngSubmit)="signIn(singInForm)" class="" >
-                <h3>Login</h3>
-                <div class="">
-                    <input type="email" class="" placeholder="Email" formControlName="email">
-                    <span>
-                        El usuario <strong>es requerido</strong>
-                    </span>
-                </div>
-                <div class="">
-                    <input type="password" class="" placeholder="password" formControlName="password">
-                    <span class="">
-                        La contraseña <strong>es requerida</strong>
-                    </span>
-                </div>
-                <div class="">
-                    <button class="btn-login" type="submit">Aceptar</button>
-                    <button class="" type="button">Volver</button>
-                </div>
-                <div class="">
-                    <a>Crear cuenta</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<section class="body-login">
+  <div class="container" id="container">
+      <div class="form-container sign-up-container">
+          <form>
+              <h1>Create Account</h1>
+              <div class="social-container">
+                  <a class="social"><i class="bx bxl-facebook"></i></a>
+                  <a class="social"><i class='bx bxl-google' ></i></a>
+              </div>
+              <span>O usa tu cuenta</span>
+              <input type="text" placeholder="Name" />
+              <input type="email" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+              <button>Sign Up</button>
+          </form>
+      </div>
+      <div class="form-container sign-in-container">
+          <form [formGroup]="singInForm" (ngSubmit)="signIn(singInForm)">
+              <h1>Sign in</h1>
+              <div class="social-container">
+                  <a class="social"><i class="bx bxl-facebook"></i></a>
+                  <a class="social"><i class='bx bxl-google' ></i></a>
+              </div>
+              <span>O usa tu cuenta</span>
+              <input type="email" placeholder="Email" formControlName="email" />
+              <input type="password" placeholder="Password" formControlName="password" />
+              <!-- <a href="#">Forgot your password?</a> -->
+              <button type="submit">Sign In</button>
+          </form>
+      </div>
+      <div class="overlay-container">
+          <div class="overlay">
+              <div class="overlay-panel overlay-left">
+                  <h1>Bienvenido de nuevo!</h1>
+                  <p>Inicie sesion para acceder al sistema</p>
+                  <button class="ghost" (click)="changeRightDelete()">Sign In</button>
+              </div>
+              <div class="overlay-panel overlay-right">
+                  <h1>Bienvenido al Palacio de los mariscos!</h1>
+                  <p>No tienes cuenta? Registrate</p>
+                  <button class="ghost" (click)="changeRightActive()">Sign Up</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
