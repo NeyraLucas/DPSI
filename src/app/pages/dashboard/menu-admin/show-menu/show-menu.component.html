@@ -1,6 +1,7 @@
 <!-- cards -->
 <div class="menu__content">
-    <a routerLink="add" class="button-green">Add new Item</a>
+    <!-- <a routerLink="add" class="button-green">Add new Item</a> -->
+    <button mat-button (click)="openDialog()">Agregar nuevo producto</button>
     <h2>MENU</h2>
     <div class="menu__cards__content">
         <div class="cards" *ngFor="let menu of(menu$ | async)">

@@ -27,7 +27,7 @@ import { OrdenesComponent } from './dashboard/ordenes/ordenes.component';
 import { NavMenuComponent } from './customer/nav-menu/nav-menu.component';
 import { MenuCategoriaComponent } from './customer/menu-categoria/menu-categoria.component';
 import { PrincipalComponent } from './customer/menu/principal/principal.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,8 @@ import { PrincipalComponent } from './customer/menu/principal/principal.componen
     MatCardModule,
     MatGridListModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
 
   ],
   exports:[

@@ -5,6 +5,9 @@ import { inventario } from 'src/app/models/Inventario.model';
 import { InventarioService } from 'src/app/services/inventario.service';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { ModalProductsComponent } from 'src/app/shared/components/modal-products/modal-products.component';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -22,7 +25,7 @@ export class ProductsComponent implements OnInit {
   // data = new MatTableDataSource<inventario>();
   data = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private serviceInventario: InventarioService) {}
+  constructor(private serviceInventario: InventarioService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.serviceInventario.getAllProducts().subscribe((products: any) => {
@@ -77,4 +80,24 @@ export class ProductsComponent implements OnInit {
       row.stock,
     ]);
   }
+
+  //modal
+    openDialog(){
+    this.serviceInventario.initializedFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+      this.dialog.open(ModalProductsComponent);
+    }
+
+    //edit
+    onEdit(row:any){
+      this.serviceInventario.populateForm(row);
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = "60%";
+      this.dialog.open(ModalProductsComponent,dialogConfig);
+    }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Menu } from 'src/app/models/Menu.model';
 import { OrdenesService } from 'src/app/services/ordenes.service';
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { ModalProductsComponent } from 'src/app/shared/components/modal-products/modal-products.component';
 
 
 @Component({
@@ -20,17 +22,21 @@ import { OrdenesService } from 'src/app/services/ordenes.service';
 
 export class OrdenesComponent implements OnInit {
 
-  dataSource = ELEMENT_DATA;
   columnsToDisplay = ['id', 'name', 'description', 'price', 'status'];
   expandedElement!: PeriodicElement | null;
   data: (Menu & { id: string })[] = [];
 
-  constructor(private ordersService: OrdenesService) { }
+  constructor(private ordersService: OrdenesService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.ordersService.GetAllOrders().subscribe((data) =>{
       this.data = data
     })
+  }
+
+  //modal
+  openDialog(){
+    this.dialog.open(ModalProductsComponent);
   }
 
 }
@@ -44,22 +50,3 @@ export interface PeriodicElement {
   description: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    position: 1,
-    name: 'Hydrogen',
-    weight: 1.0079,
-    symbol: 'H',
-    description: `Hydrogen is a chemical element with symbol H and atomic number 1. With a standard
-        atomic weight of 1.008, hydrogen is the lightest element on the periodic table.`,
-  },
-  {
-    position: 2,
-    name: 'Helium',
-    weight: 4.0026,
-    symbol: 'He',
-    description: `Helium is a chemical element with symbol He and atomic number 2. It is a
-        colorless, odorless, tasteless, non-toxic, inert, monatomic gas, the first in the noble gas
-        group in the periodic table. Its boiling point is the lowest among all the elements.`,
-  },
-];

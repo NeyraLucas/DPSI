@@ -1,7 +1,6 @@
 <h1>Inventario</h1>
-
+<button mat-button (click)="openDialog()">Agregar nuevo producto</button>
 <div class="add-product">
-    <button class="button-green" routerLink="new" type="button">Agregar nuevo producto</button>
     <button class="button-gray" (click)="generatePDF()"  type="button"><i class='bx bxs-file-pdf '></i> Generar PDF</button>
 </div>
 
@@ -53,6 +52,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <mat-paginator [pageSizeOptions]="[2, 4, 5]"
-showFirstLastButtons 
+showFirstLastButtons
 aria-label="Select page of inventary elements">
 </mat-paginator>
