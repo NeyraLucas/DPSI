@@ -28,6 +28,8 @@ import { NavMenuComponent } from './customer/nav-menu/nav-menu.component';
 import { MenuCategoriaComponent } from './customer/menu-categoria/menu-categoria.component';
 import { PrincipalComponent } from './customer/menu/principal/principal.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { EmpleadosComponent } from './dashboard/empleados/empleados.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     NavMenuComponent,
     MenuCategoriaComponent,
     PrincipalComponent,
+    EmpleadosComponent,
   ],
   imports: [
     SharedModule,
@@ -62,7 +65,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatGridListModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
 
   ],
   exports:[

@@ -51,9 +51,9 @@ export class PuntoDeVentaComponent implements OnInit {
   public payMenu() {
     const men:any = this.clickedRows;
     try {
-      this.ordersService.CreateOrder(men);
+     // this.ordersService.CreateOrder(men);
       console.log("Ordenes:");
-      //console.log(men);
+      console.log(men);
 
       window.alert('Producto ordenado');
       this.route.navigateByUrl('admin');
