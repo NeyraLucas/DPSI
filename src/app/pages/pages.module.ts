@@ -4,14 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+
+// Components
 import { NewProductComponent } from './dashboard/new-product/new-product.component';
 import { HomeComponent } from './dashboard/home/home.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
-import { EditComponent } from './dashboard/edit/edit.component';
-import {MatGridListModule} from '@angular/material/grid-list';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsComponent } from './dashboard/products/products.component';
 import { MenuComponent } from './customer/menu/menu.component';
@@ -19,15 +15,26 @@ import { MenuAdminComponent } from './dashboard/menu-admin/menu-admin.component'
 import { ShowMenuComponent } from './dashboard/menu-admin/show-menu/show-menu.component';
 import { EditMenuComponent } from './dashboard/menu-admin/edit-menu/edit-menu.component';
 import { AddMenuComponent } from './dashboard/menu-admin/add-menu/add-menu.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { EditComponent } from './dashboard/edit/edit.component';
 import { ProveedoresComponent } from './dashboard/proveedores/proveedores.component';
 import { PuntoDeVentaComponent } from './dashboard/punto-de-venta/punto-de-venta.component';
-import {MatSelectModule} from '@angular/material/select';
+
 import { OrdenesComponent } from './dashboard/ordenes/ordenes.component';
 import { NavMenuComponent } from './customer/nav-menu/nav-menu.component';
 import { MenuCategoriaComponent } from './customer/menu-categoria/menu-categoria.component';
 import { PrincipalComponent } from './customer/menu/principal/principal.component';
+import { EmpleadosComponent } from './dashboard/empleados/empleados.component';
 
+// Angular material
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -48,6 +55,7 @@ import { PrincipalComponent } from './customer/menu/principal/principal.componen
     NavMenuComponent,
     MenuCategoriaComponent,
     PrincipalComponent,
+    EmpleadosComponent,
   ],
   imports: [
     SharedModule,
@@ -61,8 +69,9 @@ import { PrincipalComponent } from './customer/menu/principal/principal.componen
     MatCardModule,
     MatGridListModule,
     MatCheckboxModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports:[
     LoginComponent,

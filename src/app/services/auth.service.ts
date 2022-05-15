@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { SignInData } from '../models/SignInData.model';
 import { User } from '../models/User.model';
+import { NgToastService } from 'ng-angular-popup';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class AuthService {
   constructor(
     private authFire: AngularFireAuth,
     private authFirestore: AngularFirestore,
-    private readonly router: Router
+    private readonly router: Router,
+    private toast: NgToastService
   ) {
     this.checkUSerPersistence();
   }
@@ -41,9 +43,11 @@ export class AuthService {
       .signInWithEmailAndPassword(data.email, data.password)
       .then((UserCredential) => {
         this.defineUser(UserCredential.user!.uid);
+        this.toast.success({detail:"Success", summary:`Login correcto`, duration:5000})
       })
       .catch((err) => {
-        window.alert(err);
+        // window.alert(err);
+        this.toast.error({detail:"Error Login", summary:`Error: ${err}`, duration:5000})
       });
   }
 

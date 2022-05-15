@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Menu } from 'src/app/models/Menu.model';
+import { OrdenesPago } from 'src/app/models/Ordenes.model';
 import { MenuService } from 'src/app/services/menu.service';
 import { OrdenesService } from 'src/app/services/ordenes.service';
 
@@ -14,11 +15,10 @@ import { OrdenesService } from 'src/app/services/ordenes.service';
 export class PuntoDeVentaComponent implements OnInit {
   displayedColumns: string[] = ['imagen', 'nombre', 'desc', 'costo'];
   dataSource: (Menu & { id: string })[] = [];
-  clickedRows = new Set<Menu>();
+  clickedRows: Menu[] = [];
   total: number = 0;
   subTotal: number = 0;
   dataMenu!: Menu;
-  mennn!: Array<Menu>;
   selectedValue!: string;
   dataMenu$!: Observable<Array<Menu>>;
 
@@ -44,28 +44,16 @@ export class PuntoDeVentaComponent implements OnInit {
   }
 
   public test(data: Menu) {
-    console.log(data);
-    // this.dataMenu.id = data.id;
-    // this.dataMenu.description = data.description;
-    // this.dataMenu.image = data.image;
-    // this.dataMenu.name = data.name;
-    // this.dataMenu.price = data.price;
     this.total++;
     this.subTotal += data.price;
-    // this.dataMenu = data;
-
-    //this.mennn.push(data);
-    //console.log(`Total: ${this.total}`);
-  //  console.log(this.dataMenu);
   }
 
   public payMenu() {
-    const men:Menu = this.dataMenu;
+    const men:any = this.clickedRows;
     try {
-      // this.ordersService.CreateOrder(men);
+     // this.ordersService.CreateOrder(men);
       console.log("Ordenes:");
-      console.log(this.mennn);
-
+      console.log(men);
 
       window.alert('Producto ordenado');
       this.route.navigateByUrl('admin');

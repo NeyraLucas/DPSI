@@ -6,6 +6,7 @@ import { MenuComponent } from './pages/customer/menu/menu.component';
 import { PrincipalComponent } from './pages/customer/menu/principal/principal.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/dashboard/edit/edit.component';
+import { EmpleadosComponent } from './pages/dashboard/empleados/empleados.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
 import { AddMenuComponent } from './pages/dashboard/menu-admin/add-menu/add-menu.component';
 import { EditMenuComponent } from './pages/dashboard/menu-admin/edit-menu/edit-menu.component';
@@ -89,6 +90,10 @@ const routes: Routes = [
         path: 'home/ordenes',
         component: OrdenesComponent,
       },
+      {
+        path: 'empleados',
+        component: EmpleadosComponent,
+      }
 
     ],
   },

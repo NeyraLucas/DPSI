@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignInData } from 'src/app/models/SignInData.model';
 import { AuthService } from 'src/app/services/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,13 +36,11 @@ export class LoginComponent implements OnInit {
   public changeRightActive() {
     const container: HTMLElement | null = document.getElementById('container');
     container?.classList.add('right-panel-active');
-    console.log("Clicl add" + container);
-
+    console.log('Clicl add' + container);
   }
   public changeRightDelete() {
     const container: HTMLElement | null = document.getElementById('container');
     container?.classList.remove('right-panel-active');
-    console.log("Click remove");
+    console.log('Click remove');
   }
-
 }

@@ -124,8 +124,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr
         mat-row
-        (click)="clickedRows.add(row)"
-        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        (click)="clickedRows.push(row)"
         (click)="test(row)"
         *matRowDef="let row; columns: displayedColumns"
       ></tr>
