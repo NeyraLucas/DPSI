@@ -9,6 +9,9 @@
       class="demo-button">
     Remove data
   </button>
+  <button mat-raised-button (click)="exportAsXLSX()" class="demo-button">
+    Generar Excel
+  </button>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">

@@ -1,5 +1,8 @@
 <h2>Proveedores</h2>
 <button mat-raised-button (click)="openDialog()">Agregar nuevo proveedor</button>
+<button mat-raised-button (click)="exportAsXLSX()" class="demo-button">
+  Generar Excel
+</button>
 <div>
     <table mat-table [dataSource]="data" class="mat-elevation-z8">
 

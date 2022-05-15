@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { ModalProductsComponent } from 'src/app/shared/components/modal-products/modal-products.component';
+import { ExcelCustomService } from 'src/app/services/excel-custom.service';
 
 @Component({
   selector: 'app-products',
@@ -25,7 +26,7 @@ export class ProductsComponent implements OnInit {
   // data = new MatTableDataSource<inventario>();
   data = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private serviceInventario: InventarioService, private dialog: MatDialog) {}
+  constructor(private serviceInventario: InventarioService, private dialog: MatDialog, private excelService: ExcelCustomService) {}
 
   ngOnInit(): void {
     this.serviceInventario.getAllProducts().subscribe((products: any) => {
@@ -99,5 +100,9 @@ export class ProductsComponent implements OnInit {
       dialogConfig.autoFocus = true;
       dialogConfig.width = "60%";
       this.dialog.open(ModalProductsComponent,dialogConfig);
+    }
+
+    exportAsXLSX() {
+      this.excelService.exportToExcel(this.data, 'my_export');
     }
 }
