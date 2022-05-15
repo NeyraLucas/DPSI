@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { ModalMenuComponent } from './components/modal-menu/modal-menu.component';
 import { ModalProveedoresComponent } from './components/modal-proveedores/modal-proveedores.component';
-
+import { ModalVentasComponent } from './components/modal-ventas/modal-ventas.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ModalProveedoresComponent } from './components/modal-proveedores/modal-
     SidebarComponent,
     ModalProductsComponent,
     ModalMenuComponent,
-    ModalProveedoresComponent
+    ModalProveedoresComponent,
+    ModalVentasComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { ModalProveedoresComponent } from './components/modal-proveedores/modal-
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatButtonModule
   ],
   exports:[
     SidebarComponent,

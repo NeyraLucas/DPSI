@@ -1,0 +1,35 @@
+<div>
+  <h2>El palacio de los mariscos</h2>
+  <hr />
+  <div class="flex">
+    <div *ngFor="let size of [1, 2]" class="flex flex-row p-b-15">
+      <div class="flex flex-row">
+        <!-- img -->
+        <img
+          class="img-fluid p-r-5"
+          src="https://cdn7.kiwilimon.com/recetaimagen/19932/12135.jpg"
+          alt=""
+        />
+        <div>
+          <!-- Nombre -->
+          <p>Tostada de camaron</p>
+          <!-- Cantidad -->
+          <p>5 pz</p>
+          <!-- Total -->
+          <p>{{ 185 | currency }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtotal -->
+    <div>
+      <p>
+        <strong>{{ 385 | currency }}</strong>
+      </p>
+    </div>
+
+    <!-- Pagar -->
+    <button mat-button color="accent">Pagar</button>
+    <button mat-button color="warn">Cancelar</button>
+  </div>
+</div>
