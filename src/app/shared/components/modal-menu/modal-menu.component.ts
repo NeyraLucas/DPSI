@@ -4,30 +4,39 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Menu } from 'src/app/models/Menu.model';
 import { MenuService } from 'src/app/services/menu.service';
 import { ModalProductsComponent } from '../modal-products/modal-products.component';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-modal-menu',
   templateUrl: './modal-menu.component.html',
-  styleUrls: ['./modal-menu.component.scss']
+  styleUrls: ['./modal-menu.component.scss'],
 })
 export class ModalMenuComponent implements OnInit {
+  constructor(
+    public service: MenuService,
+    public dialogRef: MatDialogRef<ModalProductsComponent>,
+    private toast: NgToastService
+  ) {}
 
-  constructor(public service:MenuService, public dialogRef: MatDialogRef<ModalProductsComponent>) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-
-
-  public async createItemMenu(product: FormGroup): Promise<void>{
+  public async createItemMenu(product: FormGroup): Promise<void> {
     const inventario: Menu = product.value;
-    try{
+    try {
       await this.service.createNewItemMenu(inventario);
       console.log(product.value);
-      alert('Producto agregado correctamente');
+      this.toast.success({
+        detail: 'Success',
+        summary: `Producto agregado correctamente`,
+        duration: 5000,
+      });
       this.onClose();
-    }catch(err){
-      window.alert(err)
+    } catch (err) {
+      this.toast.error({
+        detail: 'Error',
+        summary: `Error: ${err}`,
+        duration: 5000,
+      });
     }
   }
 
@@ -36,5 +45,4 @@ export class ModalMenuComponent implements OnInit {
     this.service.initializedFormGroup();
     this.dialogRef.close();
   }
-
 }

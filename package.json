@@ -25,6 +25,7 @@
     "@types/file-saver": "^2.0.5",
     "file-saver": "^2.0.5",
     "firebase": "^9.6.8",
+    "ng-angular-popup": "^0.1.2",
     "pdfmake": "^0.2.4",
     "pdfmake-wrapper": "^2.1.2",
     "rxjs": "~7.5.0",
