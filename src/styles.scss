@@ -111,7 +111,7 @@ a {
   font-weight: bold !important;
 }
 
-.img-fluid{
+.img-fluid {
   width: 100px;
   height: 100px;
 }
@@ -130,8 +130,11 @@ table {
 }
 
 //tags
-.tags_table{
+.tags_table_blue {
   background-color: #00b4d8;
+}
+.tags_table_red {
+  background-color: #eb0a42;
 }
 
 /* CSS */
@@ -249,6 +252,36 @@ table {
     box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
       rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
       rgba(50, 151, 211, 0.3) 0 0 0 4px;
+  }
+}
+
+//card corte de caja
+.card-standar {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 250px;
+  height: 100px;
+  border-radius: 10px;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    p {
+      font-size: 18px;
+      color: #495057;
+    }
+
+    i {
+      font-size: 38px;
+      color: #00b4d8;
+    }
   }
 }
 
