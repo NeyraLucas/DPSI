@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Menu } from '../models/Menu.model';
 import { OrdenesPago } from '../models/Ordenes.model';
+import { Ventas } from '../models/Ventas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,9 @@ export class OrdenesService {
 
   public GetAllOrders(){
     return this.angularFire.collection<Menu>(`ordenes`).valueChanges({idField:'id'});
+  }
+  public GetAllOrdersVentas(){
+    return this.angularFire.collection<Ventas>(`ordenes`).valueChanges({idField:'id'});
   }
 
   /**

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { Menu } from 'src/app/models/Menu.model';
 import { OrdenesService } from 'src/app/services/ordenes.service';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { ModalProductsComponent } from 'src/app/shared/components/modal-products/modal-products.component';
+import { Ventas } from 'src/app/models/Ventas.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { ModalVentasComponent } from 'src/app/shared/components/modal-ventas/modal-ventas.component';
 
 
 @Component({
@@ -22,31 +23,34 @@ import { ModalProductsComponent } from 'src/app/shared/components/modal-products
 
 export class OrdenesComponent implements OnInit {
 
-  columnsToDisplay = ['id', 'name', 'description', 'price', 'status'];
-  expandedElement!: PeriodicElement | null;
-  data: (Menu & { id: string })[] = [];
-
+  columnsToDisplay = ['id', 'fecha', 'price', 'status', 'actions'];
+  //expandedElement!: PeriodicElement | null;
+  data: (Ventas & { id: string })[] = [];
+  dataSource = new MatTableDataSource(this.data);
   constructor(private ordersService: OrdenesService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.ordersService.GetAllOrders().subscribe((data) =>{
-      this.data = data
+    this.ordersService.GetAllOrdersVentas().subscribe((data) =>{
+      this.data = data;
+      this.dataSource = new MatTableDataSource(this.data);
+      console.log(this.data);
+
     })
   }
 
-  //modal
-  openDialog(){
-    this.dialog.open(ModalProductsComponent);
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-}
+  openDialog(id:string){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    console.log(id);
 
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  description: string;
+    this.dialog.open(ModalVentasComponent);
+  }
 }
 

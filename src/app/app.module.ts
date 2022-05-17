@@ -16,6 +16,7 @@ import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import * as pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
 import { ModalProductsComponent } from './shared/components/modal-products/modal-products.component';
+import { NgToastModule } from 'ng-angular-popup';
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
 
@@ -28,6 +29,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
     AppRoutingModule,
     SharedModule,
     PagesModule,
+    NgToastModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
