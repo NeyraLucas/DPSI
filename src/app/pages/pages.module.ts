@@ -35,6 +35,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { CorteDeCajaComponent } from './dashboard/corte-de-caja/corte-de-caja.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {MatButtonModule} from '@angular/material/button';
     MenuCategoriaComponent,
     PrincipalComponent,
     EmpleadosComponent,
+    CorteDeCajaComponent,
   ],
   imports: [
     SharedModule,

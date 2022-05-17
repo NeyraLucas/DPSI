@@ -4,6 +4,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { MenuCategoriaComponent } from './pages/customer/menu-categoria/menu-categoria.component';
 import { MenuComponent } from './pages/customer/menu/menu.component';
 import { PrincipalComponent } from './pages/customer/menu/principal/principal.component';
+import { CorteDeCajaComponent } from './pages/dashboard/corte-de-caja/corte-de-caja.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/dashboard/edit/edit.component';
 import { EmpleadosComponent } from './pages/dashboard/empleados/empleados.component';
@@ -93,6 +94,10 @@ const routes: Routes = [
       {
         path: 'empleados',
         component: EmpleadosComponent,
+      },
+      {
+        path: 'corte-de-caja',
+        component: CorteDeCajaComponent
       }
 
     ],
