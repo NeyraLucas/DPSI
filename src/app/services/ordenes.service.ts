@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Menu } from '../models/Menu.model';
 import { OrdenesPago } from '../models/Ordenes.model';
-import { Ventas } from '../models/Ventas.model';
+import { Ventas, VentasUnit } from '../models/Ventas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +11,14 @@ export class OrdenesService {
 
   constructor(private angularFire: AngularFirestore) { }
 
-  public CreateOrder(data:any){
+  public CreateOrder(data:Menu[]){
     const generateID:string = this.angularFire.createId();
-    // const example:Menu[] = data.map((obj) => {return Object.assign({},obj)} );
-    // return this.angularFire.doc<OrdenesPago>(`ordenes/${generateID}`).set(Object.assign({}, data));
-    // return this.angularFire.doc<OrdenesPago>(`ordenes/${generateID}`).set(data,{merge:true});
-    // return this.angularFire.doc<Menu[]>(`ordenes/${generateID}`).set(data.menuArr,{merge:true});
-    console.log("Example:"+data);
+    return this.angularFire.doc<Ventas>(`ordenes/${generateID}`).set({
+      id: generateID,
+      price:55,
+      productos:data,
+      status: "no pagado"
 
-    // return this.angularFire.doc<Menu[]>(`ordenes/${generateID}`).set(example,{merge:true});
-    return this.angularFire.doc<any>(`ordenes/${generateID}`).set({
-      name: data.menuArr[0].name
     });
   }
 
@@ -33,10 +30,35 @@ export class OrdenesService {
   }
 
   /**
+   * GetVentasById
+   */
+  public GetVentasById(uid: string) {
+    return this.angularFire.doc<Ventas>(`ordenes/${uid}`).valueChanges({idField:'id'});
+  }
+
+  /**
    * SizeOrders
    */
   public SizeOrders() {
     return this.angularFire.collection('ordenes').get();
+  }
+
+  /**
+   * GenerarVenta
+   */
+  public GenerarVenta(data:number,uidVenta:string) {
+
+    this.angularFire.doc(`ordenes/${uidVenta}`).set({status:"pagado"},{merge:true});
+
+    const generateID:string = this.angularFire.createId();
+    return this.angularFire.doc(`ventas/${generateID}`).set({price:data},{merge:true});
+  }
+
+  /**
+   * GetTotalDeVentas
+   */
+  public GetTotalDeVentas() {
+    return this.angularFire.collection<VentasUnit>('ventas').valueChanges();
   }
 
 }

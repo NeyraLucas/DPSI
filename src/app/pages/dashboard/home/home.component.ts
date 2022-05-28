@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Img, ITable, PdfMakeWrapper, Table, Txt } from 'pdfmake-wrapper';
 import { Observable } from 'rxjs';
 import { inventario } from 'src/app/models/Inventario.model';
+import { VentasUnit } from 'src/app/models/Ventas.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { InventarioService } from 'src/app/services/inventario.service';
 import { OrdenesService } from 'src/app/services/ordenes.service';
@@ -19,6 +20,8 @@ export class HomeComponent implements OnInit {
   sizeInventary!: number;
   sizeInventaryMenu!: number;
   sizeOrders!: number;
+  sizeVentas$!: Observable<VentasUnit[]>;
+  prueba!: number;
 
   constructor(
     private readonly authF: AuthService,
@@ -45,6 +48,16 @@ export class HomeComponent implements OnInit {
     this.serviceOrders.SizeOrders().subscribe((size) => {
       this.sizeOrders = size.size;
     });
+
+    //size Ventas
+    this.sizeVentas$ = this.serviceOrders.GetTotalDeVentas();
+    this.prueba = 0;
+    this.sizeVentas$.subscribe((data) =>{
+      data.map((x) =>{ this.prueba +=  x.price })
+    })
+
+
+
   }
 
 }

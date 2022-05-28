@@ -2,21 +2,22 @@
   <h2>El palacio de los mariscos</h2>
   <hr />
   <div class="flex">
-    <div *ngFor="let size of [1, 2]" class="flex flex-row p-b-15">
+    <div *ngFor="let arr of data.productos" class="flex flex-row p-b-15">
       <div class="flex flex-row">
+        <br>
         <!-- img -->
         <img
           class="img-fluid p-r-5"
-          src="https://cdn7.kiwilimon.com/recetaimagen/19932/12135.jpg"
+          [src]="arr.image"
           alt=""
         />
         <div>
           <!-- Nombre -->
-          <p>Tostada de camaron</p>
+          <p>{{arr.name}}</p>
           <!-- Cantidad -->
-          <p>5 pz</p>
+          <p>1 pz</p>
           <!-- Total -->
-          <p>{{ 185 | currency }}</p>
+          <p>{{ arr.price | currency }}</p>
         </div>
       </div>
     </div>
@@ -24,12 +25,12 @@
     <!-- Subtotal -->
     <div>
       <p>
-        <strong>{{ 385 | currency }}</strong>
+        <strong>{{ total | currency }}</strong>
       </p>
     </div>
 
     <!-- Pagar -->
-    <button mat-button color="accent">Pagar</button>
-    <button mat-button color="warn">Cancelar</button>
+    <button mat-button color="accent" (click)="pagar()">Pagar</button>
+    <button mat-button color="warn" (click)="cancelar()">Cancelar</button>
   </div>
 </div>

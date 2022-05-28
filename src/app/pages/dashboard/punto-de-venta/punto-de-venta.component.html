@@ -20,10 +20,11 @@
         <p>Precio</p>
         <p>Subtotal</p>
       </div>
-
+      <code>{{clickedRows | json}}</code>
       <!-- Content -->
       <div *ngFor="let menuClick of clickedRows" class="content-data">
         <div>
+
           <p class="text-bold">{{menuClick.name}}</p>
           <img
             class="img-product"

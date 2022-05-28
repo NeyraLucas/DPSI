@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Observable } from 'rxjs';
 import { Menu } from 'src/app/models/Menu.model';
-import { OrdenesPago } from 'src/app/models/Ordenes.model';
 import { MenuService } from 'src/app/services/menu.service';
 import { OrdenesService } from 'src/app/services/ordenes.service';
 
@@ -34,7 +33,8 @@ export class PuntoDeVentaComponent implements OnInit {
   constructor(
     private readonly sMenu: MenuService,
     private route: Router,
-    private ordersService: OrdenesService
+    private ordersService: OrdenesService,
+    private toast: NgToastService
   ) {}
 
   ngOnInit(): void {
@@ -51,11 +51,10 @@ export class PuntoDeVentaComponent implements OnInit {
   public payMenu() {
     const men:any = this.clickedRows;
     try {
-     // this.ordersService.CreateOrder(men);
+      this.ordersService.CreateOrder(men);
       console.log("Ordenes:");
       console.log(men);
-
-      window.alert('Producto ordenado');
+      this.toast.success({detail:"Success", summary:`Producto ordenado`, duration:5000})
       this.route.navigateByUrl('admin');
     } catch (err) {
       window.alert(err);
