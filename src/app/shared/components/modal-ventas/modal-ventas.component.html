@@ -2,7 +2,7 @@
   <h2>El palacio de los mariscos</h2>
   <hr />
   <div class="flex">
-    <div *ngFor="let arr of data.productos" class="flex flex-row p-b-15">
+    <div *ngFor="let arr of data.productos.ventas" class="flex flex-row p-b-15">
       <div class="flex flex-row">
         <br>
         <!-- img -->
@@ -25,12 +25,12 @@
     <!-- Subtotal -->
     <div>
       <p>
-        <strong>{{ total | currency }}</strong>
+        <strong>{{ data.price | currency }}</strong>
       </p>
     </div>
 
     <!-- Pagar -->
-    <button mat-button color="accent" (click)="pagar()">Pagar</button>
+    <button mat-raised-button color="accent" (click)="pagar()">Pagar</button>
     <button mat-button color="warn" (click)="cancelar()">Cancelar</button>
   </div>
 </div>

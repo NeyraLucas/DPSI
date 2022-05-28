@@ -10,20 +10,18 @@
   </div>
 
   <!-- Columns -->
-  <form class="">
+  <form class="" [formGroup]="miFormulario">
     <div class="columns">
       <div class="info_columns">
         <p>Efectivo</p>
       </div>
       <div class="form_group">
         <!-- Contado -->
-        <input type="number" value="0" />
+        <input type="number"  formControlName="contado"/>
         <!-- Calculado -->
-        <input type="number" [value]="total" disabled/>
+        <input type="number" formControlName="calculado"/>
         <!-- Diferencia -->
-        <input type="number" value="0" />
-        <!-- Contado -->
-
+        <input type="number" formControlName="diferencia"/>
       </div>
     </div>
 

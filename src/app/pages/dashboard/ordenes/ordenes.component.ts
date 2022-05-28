@@ -44,7 +44,7 @@ export class OrdenesComponent implements OnInit {
     this.ordersService.GetAllOrdersVentas().subscribe((data) => {
       this.data = data;
       this.dataSource = new MatTableDataSource(this.data);
-      // console.log(this.data);
+      console.log(this.data);
       //this.getTotal();
     });
   }
@@ -56,6 +56,8 @@ export class OrdenesComponent implements OnInit {
 
   openDialog(uid: string) {
     this.ordersService.GetVentasById(uid).pipe(take(1)).subscribe((data) => {
+      console.log(data);
+
       this.dataVentas = data;
       const dialogRef = this.dialog.open(ModalVentasComponent, {
         width: '20%',

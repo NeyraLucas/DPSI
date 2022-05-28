@@ -36,7 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { CorteDeCajaComponent } from './dashboard/corte-de-caja/corte-de-caja.component';
-
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     LoginComponent,
@@ -74,6 +74,7 @@ import { CorteDeCajaComponent } from './dashboard/corte-de-caja/corte-de-caja.co
     MatSelectModule,
     MatDialogModule,
     MatButtonModule,
+    MatIconModule
   ],
   exports:[
     LoginComponent,

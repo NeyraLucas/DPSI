@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { serverTimestamp } from '@angular/fire/firestore';
 import { Menu } from '../models/Menu.model';
 import { OrdenesPago } from '../models/Ordenes.model';
 import { Ventas, VentasUnit } from '../models/Ventas.model';
@@ -11,13 +12,25 @@ export class OrdenesService {
 
   constructor(private angularFire: AngularFirestore) { }
 
-  public CreateOrder(data:Menu[]){
+  public CreateOrder(data:Menu[], total:number){
     const generateID:string = this.angularFire.createId();
     return this.angularFire.doc<Ventas>(`ordenes/${generateID}`).set({
       id: generateID,
-      price:55,
+      price:total,
       productos:data,
-      status: "no pagado"
+      status: "no pagado",
+      fecha: serverTimestamp()
+    });
+  }
+  public CreateOrderTest(data:Menu[], total:number){
+    // let time = this.angularFire.
+    const generateID:string = this.angularFire.createId();
+    return this.angularFire.doc<Ventas>(`testordenes/${generateID}`).set({
+      id: generateID,
+      price:total,
+      productos:data,
+      status: "no pagado",
+      fecha: serverTimestamp()
 
     });
   }
@@ -27,6 +40,9 @@ export class OrdenesService {
   }
   public GetAllOrdersVentas(){
     return this.angularFire.collection<Ventas>(`ordenes`).valueChanges({idField:'id'});
+  }
+  public GetAllOrdersVentasTest(){
+    return this.angularFire.collection<Ventas>(`testordenes`).valueChanges({idField:'id'});
   }
 
   /**
