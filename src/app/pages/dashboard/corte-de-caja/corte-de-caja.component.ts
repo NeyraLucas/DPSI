@@ -20,6 +20,7 @@ export class CorteDeCajaComponent implements OnInit {
   }
 
   openDialog() {
+    this.total = 0;
     this.serviceOrdenes.GetAllOrdersVentas().pipe(take(1)).subscribe((data) => {
       data.map((x) => {
               this.total += x.price;

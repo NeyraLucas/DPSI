@@ -67,6 +67,8 @@ export class PuntoDeVentaComponent implements OnInit {
   }
 
   deleteItem(index:number){
+    this.total--;
+    this.subTotal -= this.ventas.at(index).get('price')?.value;
     this.ventas.removeAt(index);
   }
 

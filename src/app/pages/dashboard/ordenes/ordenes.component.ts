@@ -44,7 +44,6 @@ export class OrdenesComponent implements OnInit {
     this.ordersService.GetAllOrdersVentas().subscribe((data) => {
       this.data = data;
       this.dataSource = new MatTableDataSource(this.data);
-      console.log(this.data);
       //this.getTotal();
     });
   }
