@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { Observable } from 'rxjs';
 import { Menu } from 'src/app/models/Menu.model';
 import { MenuService } from 'src/app/services/menu.service';
 import { OrdenesService } from 'src/app/services/ordenes.service';
@@ -17,47 +24,69 @@ export class PuntoDeVentaComponent implements OnInit {
   clickedRows: Menu[] = [];
   total: number = 0;
   subTotal: number = 0;
-  dataMenu!: Menu;
-  selectedValue!: string;
-  dataMenu$!: Observable<Array<Menu>>;
+  dataMenu = new MatTableDataSource(this.dataSource);
 
-  foods: any = [
-    { value: '1', viewValue: '1' },
-    { value: '2', viewValue: '2' },
-    { value: '3', viewValue: '3' },
-    { value: '4', viewValue: '4' },
-    { value: '5', viewValue: '5' },
-    { value: '6', viewValue: '6' },
-  ];
+  miFormulario = this.fb.group({
+    ventas: this.fb.array([]),
+  });
 
   constructor(
     private readonly sMenu: MenuService,
     private route: Router,
     private ordersService: OrdenesService,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.sMenu.showMenuAll().subscribe((data) => {
       this.dataSource = data;
+      this.dataMenu = new MatTableDataSource(this.dataSource);
     });
   }
 
+  //Get ventas
+  get ventas() {
+    return this.miFormulario.controls['ventas'] as FormArray;
+  }
+
   public test(data: Menu) {
+
+    const ventasForms = this.fb.group({
+      name: new FormControl(data.name, [Validators.required, Validators.min(0)]),
+      image: new FormControl(data.image, [Validators.required, Validators.min(0)]),
+      pieces: new FormControl(1, [Validators.required, Validators.min(0)]),
+      price: new FormControl(data.price, [Validators.required, Validators.min(0)]),
+      amount: new FormControl(data.price, [Validators.required, Validators.min(0)]),
+    });
+
+    this.ventas.push(ventasForms);
+
     this.total++;
     this.subTotal += data.price;
   }
 
+  deleteItem(index:number){
+    this.ventas.removeAt(index);
+  }
+
   public payMenu() {
-    const men:any = this.clickedRows;
     try {
-      this.ordersService.CreateOrder(men);
-      console.log("Ordenes:");
-      console.log(men);
-      this.toast.success({detail:"Success", summary:`Producto ordenado`, duration:5000})
+      this.ordersService.CreateOrder(this.miFormulario.value, this.subTotal);
+      this.toast.success({
+        detail: 'Success',
+        summary: `Producto ordenado`,
+        duration: 5000,
+      });
       this.route.navigateByUrl('admin');
     } catch (err) {
       window.alert(err);
     }
+  }
+
+  // Filtro
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataMenu.filter = filterValue.trim().toLowerCase();
   }
 }

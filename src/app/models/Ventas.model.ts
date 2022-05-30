@@ -6,10 +6,21 @@ export interface Ventas{
   price: number,
   productos: Array<Menu>,
   status: string,
-  fecha?: timestamp,
+  fecha?: any,
 }
 
 export interface VentasUnit{
   id: string,
   price: number
+}
+
+export interface VentasTest{
+  id: string,
+  price: number,
+  productos: ventas,
+  status: string,
+  fecha?: any,
+}
+export interface ventas{
+  ventas: Array<Menu>
 }

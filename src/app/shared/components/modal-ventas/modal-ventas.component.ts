@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { NgToastService } from 'ng-angular-popup';
-import { Ventas } from 'src/app/models/Ventas.model';
+import { Ventas, VentasTest } from 'src/app/models/Ventas.model';
 import { OrdenesService } from 'src/app/services/ordenes.service';
 
 @Component({
@@ -13,16 +13,13 @@ export class ModalVentasComponent implements OnInit {
   total!:number;
   constructor(
     public dialogRef: MatDialogRef<ModalVentasComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Ventas,
+    @Inject(MAT_DIALOG_DATA) public data: VentasTest,
     private serviceOrders: OrdenesService,
     private toast: NgToastService
   ) { }
 
   ngOnInit(): void {
-    this.total = 0;
-    this.data.productos.map((data)=>{
-      this.total += data.price
-    });
+
   }
 
   cancelar(){
@@ -31,8 +28,8 @@ export class ModalVentasComponent implements OnInit {
 
   pagar(){
     try{
-      this.serviceOrders.GenerarVenta(this.total, this.data.id);
-      this.toast.success({detail:"Success", summary:`Se ha pagado ${this.total}`, duration:5000});
+      this.serviceOrders.GenerarVenta(this.data.price, this.data.id);
+      this.toast.success({detail:"Success", summary:`Se ha pagado ${this.data.price}`, duration:5000});
       this.dialogRef.close();
     }catch(err){
       this.toast.error({detail:"Error Pay", summary:`Error al pagar: ${err}`, duration:5000})

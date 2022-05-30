@@ -1,22 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { startWith, Subscription, take } from 'rxjs';
 import { OrdenesService } from 'src/app/services/ordenes.service';
 
 @Component({
   selector: 'app-modal-corte',
   templateUrl: './modal-corte.component.html',
-  styleUrls: ['./modal-corte.component.scss']
+  styleUrls: ['./modal-corte.component.scss'],
 })
-export class ModalCorteComponent implements OnInit {
+export class ModalCorteComponent implements OnInit, OnDestroy {
+  total: number = 0;
+  public miFormulario!: FormGroup;
+  private _subscription!: Subscription;
 
-  total: number = 0; // 0+5+5 = 10   ? + 5 + 5 = NaN
-  constructor(private serviceOrdenes: OrdenesService) { }
+  constructor(
+    private serviceOrdenes: OrdenesService,
+    @Inject(MAT_DIALOG_DATA) public data: number
+  ) {}
 
   ngOnInit(): void {
-    this.serviceOrdenes.GetTotalDeVentas().subscribe((data) =>{
-      data.map((x) =>{
-        this.total += x.price;
-      })
-    })
+    console.log(this.data);
+
+    this.miFormulario = this._myInitialForm();
+    this.reactToContado();
   }
 
+  public ngOnDestroy(): void {
+    this._subscription.unsubscribe();
+  }
+
+
+
+  private  _myInitialForm() {
+    return  new FormGroup({
+      contado: new FormControl(0, [Validators.required]),
+      calculado: new FormControl(this.data, [Validators.required]),
+      diferencia: new FormControl('', [Validators.required]),
+    });
+  }
+
+  private reactToContado(): void {
+    const { contado, calculado, diferencia } = this.miFormulario.controls;
+    this._subscription = contado.valueChanges
+      .pipe(startWith(contado.value))
+      .subscribe({
+        next: (contadoValue) => {
+          const myDifference = calculado.value - contadoValue;
+          diferencia.setValue(myDifference);
+        },
+      });
+  }
 }
