@@ -5,16 +5,17 @@ import { inventario } from 'src/app/models/Inventario.model';
 import { InventarioService } from 'src/app/services/inventario.service';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalProductsComponent } from 'src/app/shared/components/modal-products/modal-products.component';
 import { ExcelCustomService } from 'src/app/services/excel-custom.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements  OnInit {
   displayedColumns: string[] = [
     'position',
     'name',
@@ -25,18 +26,36 @@ export class ProductsComponent implements OnInit {
   ];
   // data = new MatTableDataSource<inventario>();
   data = [];
+  // dataSource = new MatTableDataSource<inventario>(this.data);
+  dataSource = new MatTableDataSource<inventario>();
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private serviceInventario: InventarioService, private dialog: MatDialog, private excelService: ExcelCustomService) {}
+  @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit(): void {
-    this.serviceInventario.getAllProducts().subscribe((products: any) => {
-      this.data = products;
-    });
+  constructor(
+    private serviceInventario: InventarioService,
+    private dialog: MatDialog,
+    private excelService: ExcelCustomService
+    ) {}
+
+    ngOnInit(): void {
+      this.serviceInventario.getAllProducts().subscribe((products: any) => {
+        this.data = products;
+        this.dataSource = new MatTableDataSource<inventario>(this.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
+    }
+
+  //filter
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
-
-  //paginator
-
-
 
   //delete
   public deleteProduct(id: string) {
@@ -83,26 +102,26 @@ export class ProductsComponent implements OnInit {
   }
 
   //modal
-    openDialog(){
+  openDialog() {
     this.serviceInventario.initializedFormGroup();
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-      this.dialog.open(ModalProductsComponent);
-    }
+    dialogConfig.width = '60%';
+    this.dialog.open(ModalProductsComponent);
+  }
 
-    //edit
-    onEdit(row:any){
-      this.serviceInventario.populateForm(row);
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = true;
-      dialogConfig.autoFocus = true;
-      dialogConfig.width = "60%";
-      this.dialog.open(ModalProductsComponent,dialogConfig);
-    }
+  //edit
+  onEdit(row: any) {
+    this.serviceInventario.populateForm(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(ModalProductsComponent, dialogConfig);
+  }
 
-    exportAsXLSX() {
-      this.excelService.exportToExcel(this.data, 'my_export');
-    }
+  exportAsXLSX() {
+    this.excelService.exportToExcel(this.data, 'my_export');
+  }
 }

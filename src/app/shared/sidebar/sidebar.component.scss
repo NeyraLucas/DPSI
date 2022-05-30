@@ -138,6 +138,7 @@
   .profile .profile_details {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 
     img {
       height: 45px;
@@ -158,20 +159,24 @@
     .job {
       font-size: 12px;
     }
+
+    .icon-out{
+      font-size: 24px;
+    }
   }
 }
 
-.profile #log_out {
-  position: absolute;
-  left: 50%;
-  bottom: 5px;
-  transform: translateX(-50%);
-  min-width: 50px;
-  line-height: 80px;
-  font-size: 25px;
-  border-radius: 12px;
-  text-align: center;
-}
+// .profile #log_out {
+//   position: absolute;
+//   left: 50%;
+//   bottom: 5px;
+//   transform: translateX(-50%);
+//   min-width: 50px;
+//   line-height: 80px;
+//   font-size: 25px;
+//   border-radius: 12px;
+//   text-align: center;
+// }
 
 .profile__content .profile .profile_details{
   opacity: 0;

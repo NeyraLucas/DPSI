@@ -41,8 +41,8 @@ export class ModalCorteComponent implements OnInit, OnDestroy {
   private  _myInitialForm() {
     return  new FormGroup({
       contado: new FormControl(0, [Validators.required]),
-      calculado: new FormControl(this.data, [Validators.required]),
-      diferencia: new FormControl('', [Validators.required]),
+      calculado: new FormControl({value: this.data, disabled:true} ,[Validators.required]),
+      diferencia: new FormControl({value: 0, disabled:true}, [Validators.required]),
     });
   }
 

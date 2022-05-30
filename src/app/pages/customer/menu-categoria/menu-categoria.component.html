@@ -1,6 +1,6 @@
 <div class="box-container">
   <div class="box" *ngFor="let popular of menu$ |async">
-    <a href="#" class="fas fa-heart"></a>
+    <!-- <a href="#" class="fas fa-heart"></a> -->
     <div class="image">
       <img [src]="popular.image" alt="" />
       <!-- <img src="assets/img/food-1.png" alt="" /> -->
@@ -13,10 +13,10 @@
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star-half-alt"></i>
-        <span> (50) </span>
+        <!-- <span> (50) </span> -->
       </div>
       <div class="price">{{popular.price | currency}}<span>{{(popular.price)+50 |currency}}</span></div>
-      <a href="#" class="btn">add to cart</a>
+      <!-- <a href="#" class="btn">add to cart</a> -->
     </div>
   </div>
 </div>

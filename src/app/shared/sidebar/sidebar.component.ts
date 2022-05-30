@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/User.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,9 +9,23 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  userData$!: Observable<User>;
+  name: string = "";
+  roleName: string = "";
+  role!: boolean;
   constructor(private readonly authF: AuthService) { }
 
   ngOnInit(): void {
+     this.authF.user$.subscribe((data) =>{
+        this.name = data!.name,
+        this.role = data!.roles.admin
+     })
+
+     if(this.role){
+      this.roleName = "Administrador"
+     }else{
+       this.roleName = "Empleado"
+     }
   }
 
   public exit() {
