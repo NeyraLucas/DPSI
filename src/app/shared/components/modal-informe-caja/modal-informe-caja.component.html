@@ -1,0 +1,44 @@
+<div class="flex flex-column flex-center">
+  <h2>Reporte de Corte de Caja</h2>
+
+  <div class="bg_ventas">
+    <h3>Datos Generales</h3>
+  </div>
+
+  <!-- DATOS GENERALES -->
+  <div>
+    <div class="grid">
+      <!-- Fecha -->
+      <div>
+        <p>FECHA: <strong>{{ data.fecha.seconds * 1000 | date: "mediumDate" }}</strong></p>
+        <p>HORA: <strong>{{ data.fecha.seconds * 1000 | date: "mediumTime" }}</strong></p>
+        <p>USUARIO: <strong>{{ data.usuario }}</strong></p>
+        <p>CAJA: <strong>{{ data.caja }}</strong></p>
+      </div>
+      <!-- Contado -->
+      <div class="content">
+        <p>CONTADO: <strong>{{ data.contado }}</strong></p>
+        <p>CALCULADO: <strong>{{ data.calculado }}</strong></p>
+        <p>DIFERENCIA: <strong>{{ data.diferencia }}</strong></p>
+        <p>-</p>
+      </div>
+    </div>
+  </div>
+  <!-- DATOS DE LAS VENTAS -->
+  <div class="bg_ventas">
+    <h3>Datos De Las Ventas</h3>
+  </div>
+  <div>
+    <div class="grid">
+      <!-- VENTAS -->
+      <div>
+        <p>VENTAS A CONTADO: {{ prueba }}</p>
+      </div>
+      <div>
+        <p>
+          TOTAL: <strong> {{ prueba }} </strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

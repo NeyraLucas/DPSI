@@ -42,7 +42,7 @@ export class OrdenesService {
     return this.angularFire.collection<Ventas>(`ordenes`).valueChanges({idField:'id'});
   }
   public GetAllOrdersVentasTest(){
-    return this.angularFire.collection<Ventas>(`testordenes`).valueChanges({idField:'id'});
+    return this.angularFire.collection<Ventas>(`ventas`).valueChanges({idField:'id'});
   }
 
   /**

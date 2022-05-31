@@ -10,6 +10,10 @@ import { ModalProveedoresComponent } from './components/modal-proveedores/modal-
 import { ModalVentasComponent } from './components/modal-ventas/modal-ventas.component';
 import {MatButtonModule} from '@angular/material/button';
 import { ModalCorteComponent } from './components/modal-corte/modal-corte.component';
+import { ModalSearchComponent } from './components/modal-search/modal-search.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { ModalInformeCajaComponent } from './components/modal-informe-caja/modal-informe-caja.component';
 
 
 @NgModule({
@@ -19,7 +23,9 @@ import { ModalCorteComponent } from './components/modal-corte/modal-corte.compon
     ModalMenuComponent,
     ModalProveedoresComponent,
     ModalVentasComponent,
-    ModalCorteComponent
+    ModalCorteComponent,
+    ModalSearchComponent,
+    ModalInformeCajaComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +33,9 @@ import { ModalCorteComponent } from './components/modal-corte/modal-corte.compon
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports:[
     SidebarComponent,
