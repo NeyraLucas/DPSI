@@ -1,13 +1,25 @@
 <div>
   <h2>Bienvenido al corte de caja</h2>
-  <a (click)="openDialog()">
-    <div class="card-standar">
-      <div>
-        <i class="bx bxs-check-circle"></i>
+  <div class="flex flex-row">
+    <a (click)="openDialog()">
+      <div class="card-standar">
+        <div>
+          <i class="bx bxs-check-circle"></i>
+        </div>
+        <div>
+          <p>Realizar corte de caja</p>
+        </div>
       </div>
-      <div>
-        <p>Realizar corte de caja</p>
+    </a>
+    <a class="p-l-10" (click)="openDialogSearch()">
+      <div class="card-standar">
+        <div>
+          <i class='bx bx-search-alt-2'></i>
+        </div>
+        <div>
+          <p>Buscar Corte de Caja</p>
+        </div>
       </div>
-    </div>
-  </a>
+    </a>
+  </div>
 </div>

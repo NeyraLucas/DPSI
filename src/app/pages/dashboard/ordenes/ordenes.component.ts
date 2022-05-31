@@ -55,7 +55,6 @@ export class OrdenesComponent implements OnInit {
 
   openDialog(uid: string) {
     this.ordersService.GetVentasById(uid).pipe(take(1)).subscribe((data) => {
-      console.log(data);
 
       this.dataVentas = data;
       const dialogRef = this.dialog.open(ModalVentasComponent, {
@@ -64,12 +63,4 @@ export class OrdenesComponent implements OnInit {
       });
     });
   }
-
-  // getTotal(){
-  //   this.data.map((sum) =>{
-  //     sum.productos.map((x) =>{
-  //       this.total += x.price;
-  //     })
-  //   })
-  // }
 }
